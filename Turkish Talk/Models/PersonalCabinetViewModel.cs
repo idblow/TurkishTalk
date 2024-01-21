@@ -10,5 +10,6 @@
         public int ScoreRead { get; set; }
         public int ScoreGrammar { get; set; }
         public int ScoreAlphabet { get; set; }
+
     }
 }
