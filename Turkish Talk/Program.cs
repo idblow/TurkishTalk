@@ -12,6 +12,7 @@ builder.Services.AddDbContext<ApplicationDBContext>();
 builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddTransient<AuthService>();
+builder.Services.AddTransient<UserService>();
 
 
 

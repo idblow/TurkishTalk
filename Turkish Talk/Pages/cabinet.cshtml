@@ -30,8 +30,8 @@
             <div class="persona">
                 <div class="ava"></div>
                 <div class="info">
-                    <h1>Иван Иванович Иванов</h1>
-                    <p>Общий результат по курсам: 45 %</p>
+                    <h1>@Model.PersonalCabinetViewModel.FullName</h1>
+                    <p>Общий результат по курсам: @Model.PersonalCabinetViewModel.TotalScore%</p>
                 </div>
             </div>
             <div class="sections">
@@ -40,7 +40,7 @@
                         <p>Алфавит</p>
                     </div>
                     <div class="progress">
-                        <p>Выполнено: 0%</p>
+                        <p>Выполнено: @Model.PersonalCabinetViewModel.ScoreAlphabet%</p>
                     </div>
                 </div>
                 <div class="section">
@@ -48,7 +48,7 @@
                         <p>Чтение</p>
                     </div>
                     <div class="progress">
-                        <p>Выполнено: 0%</p>
+                        <p>Выполнено: @Model.PersonalCabinetViewModel.ScoreRead%</p>
                     </div>
                 </div>
                 <div class="section">
@@ -56,7 +56,7 @@
                         <p>Письмо</p>
                     </div>
                     <div class="progress">
-                        <p>Выполнено: 0%</p>
+                        <p>Выполнено: @Model.PersonalCabinetViewModel.ScoreWrite%</p>
                     </div>
                 </div>
                 <div class="section">
@@ -64,7 +64,7 @@
                         <p>Грамматика</p>
                     </div>
                     <div class="progress">
-                        <p>Выполнено: 0%</p>
+                        <p>Выполнено: @Model.PersonalCabinetViewModel.ScoreGrammar%</p>
                     </div>
                 </div>
             </div>

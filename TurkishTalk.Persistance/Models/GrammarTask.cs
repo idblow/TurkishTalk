@@ -11,6 +11,6 @@ namespace TurkishTalk.Persistance.Models
         public required Section Section { get; set; }
         public List<ProgresGrammar> ProgresGrammars { get; set; }
 
-
+     
     }
 }

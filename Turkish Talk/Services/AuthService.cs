@@ -51,7 +51,7 @@ namespace Turkish_Talk.Services
                 FullName = fullname,
                 HeshedPassword = password,
                 Salt = string.Empty,
-                Image = Array.Empty<byte>()
+               // Image = Array.Empty<byte>()
             });
 
             await _applicationDB.SaveChangesAsync();

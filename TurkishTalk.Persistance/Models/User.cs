@@ -15,12 +15,12 @@ namespace TurkishTalk.Persistance.Models
 
         public required string Salt { get; set; }
 
-        public required byte[] Image { get; set;}
+       // public required byte[] Image { get; set;}
 
-        public List<ProgresWrite>? ProgresWrite { get; set; }
-        public List<ProgresGrammar>? ProgresGrammar { get; set; }
-        public List<ProgresRead>? ProgresRead { get; set; }
-        public List<ProgressAlfabet>? ProgressAlfabet { get; set; }
+        public List<ProgresWrite> ProgresWrite { get; set; } = new List<ProgresWrite>();
+        public List<ProgresGrammar> ProgresGrammar { get; set; } = new List<ProgresGrammar>();
+        public List<ProgresRead> ProgresRead { get; set; } = new List<ProgresRead>();
+        public List<ProgressAlfabet> ProgressAlfabet { get; set; } = new List<ProgressAlfabet>();
 
     }
 }

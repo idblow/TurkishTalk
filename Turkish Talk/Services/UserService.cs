@@ -1,5 +1,7 @@
-﻿using Turkish_Talk.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Turkish_Talk.Models;
 using TurkishTalk.Persistance;
+using TurkishTalk.Persistance.Models;
 
 namespace Turkish_Talk.Services
 {
@@ -21,9 +23,74 @@ namespace Turkish_Talk.Services
         }
 
 
-        //public async Task<PersonalCabinetViewModel> GetCabinetViewModel()
-        //{
+        public async Task<PersonalCabinetViewModel?> GetCabinetViewModel()
+        {
+            var userid = GetUserIdFromSession();
 
-        //}
+            if(userid == null)
+            {
+                return null;
+            }
+
+            var user = await _applicationDBContext.Set<User>().Where(x => x.Id == userid)
+                .Include(x => x.ProgresWrite)
+                .Include(x => x.ProgressAlfabet)
+                .Include(x => x.ProgresRead)
+                .Include(x => x.ProgresGrammar).FirstAsync();
+
+            var view = new PersonalCabinetViewModel();
+
+            view.FullName = user.FullName;
+            view.ScoreGrammar = await CountCorrectAnswerGrammarAsync(user.ProgresGrammar);
+            view.ScoreWrite = await CountCorrectAnswerWriteAsync(user.ProgresWrite);
+            view.ScoreAlphabet = await CountCorrectAnswerAlfabetAsync(user.ProgressAlfabet);
+            view.ScoreRead = await CountCorrectAnswerReadAsync(user.ProgresRead);
+            view.TotalScore = TotalCountCorrectAnswer(view.ScoreGrammar, view.ScoreWrite, view.ScoreAlphabet,view.ScoreRead);
+
+            return view;
+        }
+
+        public async Task<int> CountCorrectAnswerReadAsync(List<ProgresRead> progres)
+        {
+            var countreadtask = await _applicationDBContext.Set<ReadTask>().CountAsync();
+            var fullprogress = countreadtask * 100;
+            var realprogress = progres.Select(x => x.scope).Sum();
+            var totalprogress = (realprogress * 100) / fullprogress;
+            return totalprogress;
+
+        }
+
+        public async Task<int> CountCorrectAnswerWriteAsync(List<ProgresWrite> progresWrite)
+        {
+            var countwritetask = await _applicationDBContext.Set<WriteTask>().CountAsync();
+            var fullprogress = countwritetask * 100;
+            var realprogress = progresWrite.Select(x => x.Score).Sum();
+            var totalprogress = (realprogress * 100) / fullprogress;
+            return totalprogress;
+        }
+
+        public async Task<int> CountCorrectAnswerAlfabetAsync(List<ProgressAlfabet> progres)
+        {
+            var countalphabettask = await _applicationDBContext.Set<AlfabetTask>().CountAsync();
+            var fullprogress = countalphabettask * 100;
+            var realprogress = progres.Select(x => x.scope).Sum();
+            var totalprogress = (realprogress * 100) / fullprogress;
+            return totalprogress;
+        }
+
+        public async Task<int> CountCorrectAnswerGrammarAsync(List<ProgresGrammar> progresGrammars)
+        {
+            var countgrammar = await _applicationDBContext.Set<GrammarTask>().CountAsync();
+            var fullprogress = countgrammar * 100;
+            var realprogress = progresGrammars.Select(x => x.scope).Sum();
+            var totalprogress = (realprogress * 100)/fullprogress;
+            return totalprogress;
+        }
+
+        public int TotalCountCorrectAnswer (int progressread, int progresswrite, int progressalfabet, int progressgrammar)
+        {
+            return (progressread + progresswrite + progressgrammar + progressalfabet) / 4;
+        }
+
     }
 }

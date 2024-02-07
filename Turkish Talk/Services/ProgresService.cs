@@ -60,7 +60,7 @@ namespace Turkish_Talk.Services
         }
         public async Task<bool> CheckingTestAsync(int questionId, int selectedAnswerId)
         {
-            var correctAnswerId =  _applicationDB.Set<WriteTask>().Where(x => x.Id == questionId).Select(x => x.Id).FirstOrDefault();
+            var correctAnswerId = _applicationDB.Set<WriteTask>().Where(x => x.Id == questionId).Select(x => x.Id).FirstOrDefault();
 
             return selectedAnswerId == correctAnswerId;
         }
@@ -76,6 +76,9 @@ namespace Turkish_Talk.Services
 
             return true;
         }
-       
+
+     
+
+      
     }
 }

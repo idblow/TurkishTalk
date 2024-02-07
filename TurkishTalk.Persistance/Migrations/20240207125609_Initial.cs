@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -15,9 +14,9 @@ namespace TurkishTalk.Persistance.Migrations
                 name: "Section",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -28,13 +27,12 @@ namespace TurkishTalk.Persistance.Migrations
                 name: "User",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    FullName = table.Column<string>(type: "text", nullable: false),
-                    Login = table.Column<string>(type: "text", nullable: false),
-                    HeshedPassword = table.Column<string>(type: "text", nullable: false),
-                    Salt = table.Column<string>(type: "text", nullable: false),
-                    Image = table.Column<byte[]>(type: "bytea", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Login = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HeshedPassword = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Salt = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -45,10 +43,11 @@ namespace TurkishTalk.Persistance.Migrations
                 name: "AlfabetTask",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Level = table.Column<int>(type: "integer", nullable: false),
-                    SectionId = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Level = table.Column<int>(type: "int", nullable: false),
+                    SectionId = table.Column<int>(type: "int", nullable: false),
+                    Tests = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -65,11 +64,11 @@ namespace TurkishTalk.Persistance.Migrations
                 name: "GrammarTask",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    level = table.Column<int>(type: "integer", nullable: false),
-                    Rule = table.Column<string>(type: "text", nullable: false),
-                    SectionId = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    level = table.Column<int>(type: "int", nullable: false),
+                    Rule = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SectionId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -86,16 +85,16 @@ namespace TurkishTalk.Persistance.Migrations
                 name: "ReadTask",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Level = table.Column<int>(type: "integer", nullable: false),
-                    TextReadingExample = table.Column<string>(type: "text", nullable: false),
-                    TextReadingVoiceExample = table.Column<string>(type: "text", nullable: false),
-                    QuestionsData = table.Column<string>(type: "text", nullable: false),
-                    FixString = table.Column<string>(type: "text", nullable: false),
-                    QuestionText = table.Column<string>(type: "text", nullable: false),
-                    FixStringCorrect = table.Column<string>(type: "text", nullable: false),
-                    SectionId = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Level = table.Column<int>(type: "int", nullable: false),
+                    TextReadingExample = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TextReadingVoiceExample = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    QuestionsData = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FixString = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    QuestionText = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FixStringCorrect = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SectionId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -112,13 +111,13 @@ namespace TurkishTalk.Persistance.Migrations
                 name: "WriteTask",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Level = table.Column<int>(type: "integer", nullable: false),
-                    Rule = table.Column<string>(type: "text", nullable: false),
-                    FixString = table.Column<string>(type: "text", nullable: false),
-                    FixStringCorrect = table.Column<string>(type: "text", nullable: false),
-                    SectionId = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Level = table.Column<int>(type: "int", nullable: false),
+                    Rule = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FixString = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FixStringCorrect = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SectionId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -135,11 +134,11 @@ namespace TurkishTalk.Persistance.Migrations
                 name: "ProgressAlfabet",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    scope = table.Column<int>(type: "integer", nullable: false),
-                    AlfabetTaskId = table.Column<int>(type: "integer", nullable: false),
-                    UserId = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    scope = table.Column<int>(type: "int", nullable: false),
+                    AlfabetTaskId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -162,11 +161,11 @@ namespace TurkishTalk.Persistance.Migrations
                 name: "ProgresGrammar",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    scope = table.Column<int>(type: "integer", nullable: false),
-                    UserId = table.Column<int>(type: "integer", nullable: false),
-                    GrammarTaskId = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    scope = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    GrammarTaskId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -189,11 +188,11 @@ namespace TurkishTalk.Persistance.Migrations
                 name: "ProgresRead",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    scope = table.Column<string>(type: "text", nullable: false),
-                    ReadTaskId = table.Column<int>(type: "integer", nullable: false),
-                    UserId = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    scope = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ReadTaskId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -216,11 +215,11 @@ namespace TurkishTalk.Persistance.Migrations
                 name: "ProgresWrite",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Score = table.Column<int>(type: "integer", nullable: false),
-                    UserId = table.Column<int>(type: "integer", nullable: false),
-                    WriteTaskId = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Score = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    WriteTaskId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -243,13 +242,13 @@ namespace TurkishTalk.Persistance.Migrations
                 name: "WordDictionary",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Word = table.Column<string>(type: "text", nullable: false),
-                    Transcription = table.Column<string>(type: "text", nullable: false),
-                    Translation = table.Column<string>(type: "text", nullable: false),
-                    WriteTaskId = table.Column<int>(type: "integer", nullable: true),
-                    AlfabetTaskId = table.Column<int>(type: "integer", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Word = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Transcription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Translation = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    WriteTaskId = table.Column<int>(type: "int", nullable: true),
+                    AlfabetTaskId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {

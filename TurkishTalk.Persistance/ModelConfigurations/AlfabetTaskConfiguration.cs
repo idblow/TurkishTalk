@@ -11,6 +11,7 @@ namespace TurkishTalk.Persistance.ModelConfigurations
             builder.HasKey(x => x.Id);
             builder.HasMany(x => x.ProgressAlfabet).WithOne(x => x.AlfabetTask);
             builder.HasMany(x => x.WordDictionary).WithOne(x => x.AlfabetTask);
+            builder.Property(x => x.Tests).HasJsonConversion();
         }
     }
 }

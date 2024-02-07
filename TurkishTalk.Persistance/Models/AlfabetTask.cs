@@ -9,5 +9,7 @@ namespace TurkishTalk.Persistance.Models
         public required Section Section { get; set; }
         public List<ProgressAlfabet> ProgressAlfabet { get; set; }
         public List< WordDictionary> WordDictionary { get; set; }
+
+        public List<TestData> Tests { get; set; }
     }
 }
