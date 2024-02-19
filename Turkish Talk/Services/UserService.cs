@@ -54,6 +54,12 @@ namespace Turkish_Talk.Services
         {
             var countreadtask = await _applicationDBContext.Set<ReadTask>().CountAsync();
             var fullprogress = countreadtask * 100;
+
+            if (fullprogress == 0)
+            {
+                fullprogress = 1;
+            }
+
             var realprogress = progres.Select(x => x.scope).Sum();
             var totalprogress = (realprogress * 100) / fullprogress;
             return totalprogress;
@@ -64,6 +70,12 @@ namespace Turkish_Talk.Services
         {
             var countwritetask = await _applicationDBContext.Set<WriteTask>().CountAsync();
             var fullprogress = countwritetask * 100;
+
+            if (fullprogress == 0)
+            {
+                fullprogress = 1;
+            }
+
             var realprogress = progresWrite.Select(x => x.Score).Sum();
             var totalprogress = (realprogress * 100) / fullprogress;
             return totalprogress;
@@ -73,6 +85,12 @@ namespace Turkish_Talk.Services
         {
             var countalphabettask = await _applicationDBContext.Set<AlfabetTask>().CountAsync();
             var fullprogress = countalphabettask * 100;
+
+            if (fullprogress == 0)
+            {
+                fullprogress = 1;
+            }
+
             var realprogress = progres.Select(x => x.scope).Sum();
             var totalprogress = (realprogress * 100) / fullprogress;
             return totalprogress;
@@ -81,7 +99,14 @@ namespace Turkish_Talk.Services
         public async Task<int> CountCorrectAnswerGrammarAsync(List<ProgresGrammar> progresGrammars)
         {
             var countgrammar = await _applicationDBContext.Set<GrammarTask>().CountAsync();
+            
             var fullprogress = countgrammar * 100;
+
+            if(fullprogress == 0)
+            {
+                fullprogress = 1;
+            }
+
             var realprogress = progresGrammars.Select(x => x.scope).Sum();
             var totalprogress = (realprogress * 100)/fullprogress;
             return totalprogress;

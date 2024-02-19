@@ -15,7 +15,9 @@ namespace TurkishTalk.Persistance.Models
 
         public required string Salt { get; set; }
 
-       // public required byte[] Image { get; set;}
+        // public required byte[] Image { get; set;}
+
+        public UserRole Role { get; set; } = UserRole.User;
 
         public List<ProgresWrite> ProgresWrite { get; set; } = new List<ProgresWrite>();
         public List<ProgresGrammar> ProgresGrammar { get; set; } = new List<ProgresGrammar>();

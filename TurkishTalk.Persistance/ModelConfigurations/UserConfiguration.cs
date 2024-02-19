@@ -10,6 +10,7 @@ namespace TurkishTalk.Persistance.ModelConfigurations
         {
             builder.HasKey(x => x.Id);
 
+            builder.Property(x => x.Role).IsRequired();
             
             builder.HasMany(x => x.ProgresWrite).WithOne(x => x.User);
 
