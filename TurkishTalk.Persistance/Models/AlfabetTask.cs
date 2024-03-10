@@ -10,6 +10,8 @@ namespace TurkishTalk.Persistance.Models
         public List<ProgressAlfabet> ProgressAlfabet { get; set; }
         public List< WordDictionary> WordDictionary { get; set; }
 
+        public required string Name {  get; set; } 
+
         public List<TestData> Tests { get; set; }
     }
 }

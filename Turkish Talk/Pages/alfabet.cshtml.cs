@@ -14,18 +14,31 @@ namespace Turkish_Talk.Pages
         {
             this._applicationDB = applicationDB;
         }
-        public List<AlfabetTask> Tasks { get; set; }
+        public List<string> TaskTopics { get; set; } = new List<string>();
+        public List<WordDictionary> WordsColumn1 { get; set; } = new List<WordDictionary>();
+        public List<WordDictionary> WordsColumn2 { get; set; } = new List<WordDictionary>();
+        public List<WordDictionary> WordsColumn3 { get; set; } = new List<WordDictionary>();
+        public List<TestData> Tests { get; set; } = new List<TestData>();
 
         public async Task OnGetAsync()
         {
-           Tasks = await _applicationDB.Set<AlfabetTask>().ToListAsync();
+           TaskTopics = await _applicationDB.Set<AlfabetTask>().Select(x=>x.Name).ToListAsync();
         }
 
         public AlfabetTask ActiveTask { get; set; }
 
-        public async Task OnTaskSelected(long id)
+
+        public async Task OnTaskSelected(string name)
         {
-            ActiveTask = await _applicationDB.Set<AlfabetTask>().FirstAsync(x => x.Id == id);
+            ActiveTask = await _applicationDB.Set<AlfabetTask>().Include(x=>x.WordDictionary).FirstAsync(x => x.Name == name);
+            var words = ActiveTask.WordDictionary;
+            var columnLenght = words.Count/3;
+            WordsColumn1 = words.Take(columnLenght).ToList();   
+            WordsColumn2 = words.Skip(columnLenght).Take(columnLenght).ToList();
+            WordsColumn3 = words.Skip(columnLenght * 2).ToList();
+            Tests = ActiveTask.Tests;
         }
+
+
     }
 }

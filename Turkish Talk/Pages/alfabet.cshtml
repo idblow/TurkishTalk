@@ -55,53 +55,51 @@
             </div>
             <label class="topic" for="rating">Тема урока: </label>
             <select class="custom_select" id="rating" name="rating">
-                <option value="1">dfnlsdkfjsdjflksjf</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+
+                <option value="" selected="selected">Не выбрано</option>
+                @foreach (var item in Model.TaskTopics)
+                {
+                    <option value="@item">@item</option>
+                }   
+               
             </select>
             <div class="learn">
                 <h2>Выучи слова</h2>
                 <div class="words">
                     <div class="word">
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>                     
-                        <p>Слово - перевод</p>
+
+                        @foreach (var item in Model.WordsColumn1)
+                        {
+                            <p>@item.Word - @item.Translation</p>
+                        }
+                        
                     </div>
                     <div class="word">
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>
+                        @foreach (var item in Model.WordsColumn2)
+                        {
+                            <p>@item.Word - @item.Translation</p>
+                        }
+
                     </div>
                     <div class="word">
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>
+                        @foreach (var item in Model.WordsColumn3)
+                        {
+                            <p>@item.Word - @item.Translation</p>
+                        }
                     </div>
                 </div>
                 <button class="btn_more"><p>Больше слов</p></button>
             </div>
             <div class="test">
-                <h2>Тест №1</h2>
+                <h2>Выполни тест</h2>
                 <div class="question">
                     <ol>
-                        <li>Вопрос 1</li>
-                        <input type="text" class="text_field">
-                        <li>Вопрос 1</li>
-                        <input type="text" class="text_field">
-                        <li>Вопрос 1</li>
-                        <input type="text" class="text_field">
-                        <li>Вопрос 1</li>
-                        <input type="text" class="text_field">
-                        <li>Вопрос 1</li>
-                        <input type="text" class="text_field">
+                        @foreach (var item in Model.Tests)
+                        {
+                            <li>@item.Question</li>
+                            <input type="text" class="text_field" id="@item.Id"/>
+                        }
+                       
                     </ol>
                 </div>
                 <button class="btn_answer"><p>Ответить</p></button>

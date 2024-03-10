@@ -56,11 +56,12 @@
         <div class="container">
             <label class="topic" for="rating">Тема урока: </label>
             <select class="custom_select" id="rating" name="rating">
-                <option value="1">dfnlsdkfjsdjflksjf</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+
+                <option value="" selected="selected">Не выбрано</option>
+                @foreach (var item in Model.TaskTopics)
+                {
+                    <option value="@item">@item</option>
+                }
             </select>
             <div class="reading">
                 <h2>Пример чтения текста</h2>
