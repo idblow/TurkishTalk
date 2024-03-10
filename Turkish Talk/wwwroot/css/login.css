@@ -9,10 +9,8 @@ body {
     background: #f6f5f7;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    height: 100vh;
-    width: 100%;
     margin: 0;
     padding: 0;
 }
@@ -42,8 +40,8 @@ a {
 }
 
 .container_header {
-    width: 100%;
-   
+    width: 1344px;
+    margin: auto;
 }
 
 header {
@@ -90,6 +88,7 @@ nav ul li a {
     margin: auto;
     max-width: 100%;
     min-height: 480px;
+    margin: 60px;
 }
 
 .form-container form {

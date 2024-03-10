@@ -1,18 +1,19 @@
 ﻿@page
-@model Turkish_Talk.Pages.alfabetModel
+@model Turkish_Talk.Pages.readingModel
 @{
-    ViewData["Title"] = "Алфавит";
+    ViewData["Title"] = "Раздел чтения";
 }
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"]</title>
     <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet">
-    <link rel="stylesheet" href="~/css/alfabet.css">
+    <link rel="stylesheet" href="/css/reading.css">
+    <title>@ViewData["Title"]</title>
     <link rel="shortcut icon" href="/img/logo_title.svg" type="image/png">
 </head>
 <body>
-    <div style="background-image: url('/img/background_alfabet.png'); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
+    <div style="background-image: url('/img/background_read.png'); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
         <header id="header">
             <div class="container">
                 <nav class="header-line">
@@ -31,10 +32,14 @@
                 <div class="main-block">
                     <div class="main-text">
                         <div class="main-title">
-                            <h1>Раздел изучения турецкого алфавита</h1>
+                            <h1>Раздел чтения турецкого алфавита</h1>
                         </div>
                         <div class="main-subtitle">
-                            <p>Начни изучение с самого начала</p>
+                            <p>
+                                Тренируй навык понимания турецких
+                                текстов и контекста, в котором они
+                                употребляются
+                            </p>
                         </div>
                         <button class="cat">
                             <p>Начать учиться</p>
@@ -49,10 +54,6 @@
     </div>
     <div class="main_block">
         <div class="container">
-            <div class="alfabet">
-                <h2>Алфавит</h2>
-                <img src="/img/alfabet.png" alt="">
-            </div>
             <label class="topic" for="rating">Тема урока: </label>
             <select class="custom_select" id="rating" name="rating">
                 <option value="1">dfnlsdkfjsdjflksjf</option>
@@ -61,50 +62,44 @@
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
-            <div class="learn">
-                <h2>Выучи слова</h2>
-                <div class="words">
-                    <div class="word">
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>                     
-                        <p>Слово - перевод</p>
-                    </div>
-                    <div class="word">
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>
-                    </div>
-                    <div class="word">
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>
-                        <p>Слово - перевод</p>
-                    </div>
-                </div>
-                <button class="btn_more"><p>Больше слов</p></button>
+            <div class="reading">
+                <h2>Пример чтения текста</h2>
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea modi quia quod repudiandae asperiores itaque rerum eius. Aspernatur minima error accusamus blanditiis totam ullam ducimus dolorum accusantium! Illo, numquam eligendi!
+                    Libero in ea officiis odit iste nam cupiditate doloribus eos maxime. Quam, quasi odio itaque maxime magni atque velit? Porro debitis, veritatis iste sapiente saepe laborum officiis fugiat aliquam expedita.
+                    Architecto ratione est impedit maxime facilis veniam aperiam, corrupti ad! Inventore fugit earum iste ex non! Quos magni, dolor aliquam repellat est sapiente! Aliquam, autem corporis! Dolorum sequi error possimus!
+                    Dolorem iure exercitationem quae vitae nisi placeat doloribus beatae culpa sunt. Exercitationem iusto rem qui impedit facilis nam quam nulla omnis rerum, quasi tenetur hic quibusdam! Et deserunt natus quasi!
+                </p>
             </div>
-            <div class="test">
-                <h2>Тест №1</h2>
-                <div class="question">
-                    <ol>
-                        <li>Вопрос 1</li>
-                        <input type="text" class="text_field">
-                        <li>Вопрос 1</li>
-                        <input type="text" class="text_field">
-                        <li>Вопрос 1</li>
-                        <input type="text" class="text_field">
-                        <li>Вопрос 1</li>
-                        <input type="text" class="text_field">
-                        <li>Вопрос 1</li>
-                        <input type="text" class="text_field">
-                    </ol>
+            <p style="font-size: 25px;
+        font-weight: 600; margin-top: 40px; margin-bottom: 40px;">Прочитайте текста на турецком языке. С помощью словаря переведите текст и ответьте на вопросы.</p>
+            <div class="test_block">
+                <div class="learn">
+                    <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem harum, numquam modi magni error, rerum obcaecati facere, veniam odit quibusdam sequi hic inventore? Porro, corrupti ratione laborum commodi eaque velit.
+                        Blanditiis nulla, commodi amet dolorum pariatur sapiente expedita laudantium facilis odit unde recusandae velit, molestiae sed sint ipsam voluptate, asperiores eaque vel quia. Possimus reprehenderit est quod maiores! Recusandae, saepe.
+                        Iste laboriosam quasi aperiam ut dignissimos? Assumenda molestias ipsa itaque maxime omnis, quia accusamus numquam, tempore culpa dolore provident temporibus nulla libero aut id eaque voluptate labore natus vel laboriosam?
+                        Reprehenderit veritatis, neque fuga omnis quia sequi veniam mollitia optio similique ipsam error natus illo sed commodi. Unde, modi iure laborum sequi beatae nemo numquam autem aspernatur, doloremque qui libero?
+                        Hic deleniti veniam blanditiis necessitatibus, molestias perspiciatis laboriosam fuga eum, minus error accusantium eos nisi dignissimos porro labore corrupti, illo explicabo nostrum quia earum quibusdam. Explicabo praesentium quo omnis veritatis.
+                    </p>
                 </div>
-                <button class="btn_answer"><p>Ответить</p></button>
+                <div class="test">
+                    <div class="question">
+                        <ol>
+                            <li>Вопрос 1</li>
+                            <input type="text" class="text_field">
+                            <li>Вопрос 1</li>
+                            <input type="text" class="text_field">
+                            <li>Вопрос 1</li>
+                            <input type="text" class="text_field">
+                            <li>Вопрос 1</li>
+                            <input type="text" class="text_field">
+                            <li>Вопрос 1</li>
+                            <input type="text" class="text_field">
+                        </ol>
+                    </div>
+                    <button class="btn_answer"><p>Ответить</p></button>
+                </div>
             </div>
             <div class="result">
                 <p>Результаты теста: <span>0%</span></p>
@@ -144,7 +139,4 @@
         </div>
     </footer>
     <script src="/js/header_scroll.js"></script>
-        </div>
-    </div>
-   
 </body>
