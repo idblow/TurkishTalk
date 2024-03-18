@@ -51,36 +51,31 @@
         <div class="container">
             <label class="topic" for="rating">Тема урока: </label>
             <select class="custom_select" id="rating" name="rating">
-                <option value="1">dfnlsdkfjsdjflksjf</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+                <option value="" selected="selected">Не выбрано</option>
+                @foreach (var item in Model.TaskTopics)
+                {
+                    <option value="@item">@item</option>
+                }
             </select>
             <div class="gramma">
                 <h2>Правила:</h2>
                 <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea modi quia quod repudiandae asperiores itaque rerum eius. Aspernatur minima error accusamus blanditiis totam ullam ducimus dolorum accusantium! Illo, numquam eligendi!
-                    Libero in ea officiis odit iste nam cupiditate doloribus eos maxime. Quam, quasi odio itaque maxime magni atque velit? Porro debitis, veritatis iste sapiente saepe laborum officiis fugiat aliquam expedita.
-                    Architecto ratione est impedit maxime facilis veniam aperiam, corrupti ad! Inventore fugit earum iste ex non! Quos magni, dolor aliquam repellat est sapiente! Aliquam, autem corporis! Dolorum sequi error possimus!
-                    Dolorem iure exercitationem quae vitae nisi placeat doloribus beatae culpa sunt. Exercitationem iusto rem qui impedit facilis nam quam nulla omnis rerum, quasi tenetur hic quibusdam! Et deserunt natus quasi!
+                    @foreach (var item in Model.Rule)
+                    {
+                       <p>@item</p>
+                    }
                 </p>
             </div>
             <div class="test_block">
                 <div class="test">
-                    <h2>Тест №1</h2>
+                    <h2>Выполни тест</h2>
                     <div class="question">
                         <ol>
-                            <li>Вопрос 1</li>
-                            <input type="text" class="text_field">
-                            <li>Вопрос 1</li>
-                            <input type="text" class="text_field">
-                            <li>Вопрос 1</li>
-                            <input type="text" class="text_field">
-                            <li>Вопрос 1</li>
-                            <input type="text" class="text_field">
-                            <li>Вопрос 1</li>
-                            <input type="text" class="text_field">
+                            @foreach (var item in Model.Tests)
+                            {
+                                <li>@item.Question</li>
+                                <input type="text" class="text_field" id="@item.Id" />
+                            }
                         </ol>
                     </div>
                     <button class="btn_answer"><p>Ответить</p></button>
@@ -91,7 +86,7 @@
                         <ol>
                             <li>Вопрос 1</li>
                             <label class="custom-radio">
-                                <input type="radio" value="" checked name="furniture">
+                                <input type="radio" value="" checked name="furniture" >
                                 <span>Кухня</span>
                             </label>
                             <label class="custom-radio">

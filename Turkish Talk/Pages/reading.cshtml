@@ -62,14 +62,15 @@
                 {
                     <option value="@item">@item</option>
                 }
+
             </select>
             <div class="reading">
                 <h2>Пример чтения текста</h2>
                 <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea modi quia quod repudiandae asperiores itaque rerum eius. Aspernatur minima error accusamus blanditiis totam ullam ducimus dolorum accusantium! Illo, numquam eligendi!
-                    Libero in ea officiis odit iste nam cupiditate doloribus eos maxime. Quam, quasi odio itaque maxime magni atque velit? Porro debitis, veritatis iste sapiente saepe laborum officiis fugiat aliquam expedita.
-                    Architecto ratione est impedit maxime facilis veniam aperiam, corrupti ad! Inventore fugit earum iste ex non! Quos magni, dolor aliquam repellat est sapiente! Aliquam, autem corporis! Dolorum sequi error possimus!
-                    Dolorem iure exercitationem quae vitae nisi placeat doloribus beatae culpa sunt. Exercitationem iusto rem qui impedit facilis nam quam nulla omnis rerum, quasi tenetur hic quibusdam! Et deserunt natus quasi!
+                    @foreach (var item in Model.TextReadingExample)
+                    {
+                        <p>@item</p>
+                    }
                 </p>
             </div>
             <p style="font-size: 25px;
@@ -77,26 +78,20 @@
             <div class="test_block">
                 <div class="learn">
                     <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem harum, numquam modi magni error, rerum obcaecati facere, veniam odit quibusdam sequi hic inventore? Porro, corrupti ratione laborum commodi eaque velit.
-                        Blanditiis nulla, commodi amet dolorum pariatur sapiente expedita laudantium facilis odit unde recusandae velit, molestiae sed sint ipsam voluptate, asperiores eaque vel quia. Possimus reprehenderit est quod maiores! Recusandae, saepe.
-                        Iste laboriosam quasi aperiam ut dignissimos? Assumenda molestias ipsa itaque maxime omnis, quia accusamus numquam, tempore culpa dolore provident temporibus nulla libero aut id eaque voluptate labore natus vel laboriosam?
-                        Reprehenderit veritatis, neque fuga omnis quia sequi veniam mollitia optio similique ipsam error natus illo sed commodi. Unde, modi iure laborum sequi beatae nemo numquam autem aspernatur, doloremque qui libero?
-                        Hic deleniti veniam blanditiis necessitatibus, molestias perspiciatis laboriosam fuga eum, minus error accusantium eos nisi dignissimos porro labore corrupti, illo explicabo nostrum quia earum quibusdam. Explicabo praesentium quo omnis veritatis.
+                        @foreach (var item in Model.QuestionText)
+                        {
+                          <p>@item</p>
+                        }
                     </p>
                 </div>
                 <div class="test">
                     <div class="question">
                         <ol>
-                            <li>Вопрос 1</li>
-                            <input type="text" class="text_field">
-                            <li>Вопрос 1</li>
-                            <input type="text" class="text_field">
-                            <li>Вопрос 1</li>
-                            <input type="text" class="text_field">
-                            <li>Вопрос 1</li>
-                            <input type="text" class="text_field">
-                            <li>Вопрос 1</li>
-                            <input type="text" class="text_field">
+                            @foreach (var item in Model.Tests)
+                            {
+                                <li>@item.Question</li>
+                                <input type="text" class="text_field" id="@item.Id" />
+                            }   
                         </ol>
                     </div>
                     <button class="btn_answer"><p>Ответить</p></button>

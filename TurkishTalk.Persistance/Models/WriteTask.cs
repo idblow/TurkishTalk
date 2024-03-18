@@ -11,7 +11,7 @@ namespace TurkishTalk.Persistance.Models
         public int Id { get; set; }
 
         public int Level { get; set; }
-
+        public required string Name { get; set; }
         public required string Rule { get; set; }
 
         public required string  FixString { get; set; }
@@ -22,6 +22,8 @@ namespace TurkishTalk.Persistance.Models
 
         public List<ProgresWrite> ProgresWrite { get; set; }
 
-        public List< WordDictionary> WordDictionary { get; set; }
+        public List<WordDictionary> WordDictionary { get; set; }
+
+        public List<TestData> Tests { get; set; }
     }
 }

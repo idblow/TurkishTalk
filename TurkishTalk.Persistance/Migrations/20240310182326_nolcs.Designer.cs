@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TurkishTalk.Persistance;
 
@@ -11,9 +12,11 @@ using TurkishTalk.Persistance;
 namespace TurkishTalk.Persistance.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240310182326_nolcs")]
+    partial class nolcs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,10 +61,6 @@ namespace TurkishTalk.Persistance.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rule")
                         .IsRequired()
@@ -207,10 +206,6 @@ namespace TurkishTalk.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("QuestionText")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("SectionId")
                         .HasColumnType("int");
 
@@ -258,9 +253,6 @@ namespace TurkishTalk.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("GrammarTaskId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Question")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -272,16 +264,9 @@ namespace TurkishTalk.Persistance.Migrations
                     b.Property<int?>("ReadTaskId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("WriteTaskId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("GrammarTaskId");
-
                     b.HasIndex("ReadTaskId");
-
-                    b.HasIndex("WriteTaskId");
 
                     b.ToTable("TestData");
                 });
@@ -367,10 +352,6 @@ namespace TurkishTalk.Persistance.Migrations
 
                     b.Property<int>("Level")
                         .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rule")
                         .IsRequired()
@@ -497,17 +478,9 @@ namespace TurkishTalk.Persistance.Migrations
 
             modelBuilder.Entity("TurkishTalk.Persistance.Models.TestData", b =>
                 {
-                    b.HasOne("TurkishTalk.Persistance.Models.GrammarTask", null)
-                        .WithMany("Tests")
-                        .HasForeignKey("GrammarTaskId");
-
                     b.HasOne("TurkishTalk.Persistance.Models.ReadTask", null)
                         .WithMany("Tests")
                         .HasForeignKey("ReadTaskId");
-
-                    b.HasOne("TurkishTalk.Persistance.Models.WriteTask", null)
-                        .WithMany("Tests")
-                        .HasForeignKey("WriteTaskId");
                 });
 
             modelBuilder.Entity("TurkishTalk.Persistance.Models.WordDictionary", b =>
@@ -546,8 +519,6 @@ namespace TurkishTalk.Persistance.Migrations
             modelBuilder.Entity("TurkishTalk.Persistance.Models.GrammarTask", b =>
                 {
                     b.Navigation("ProgresGrammars");
-
-                    b.Navigation("Tests");
                 });
 
             modelBuilder.Entity("TurkishTalk.Persistance.Models.ReadTask", b =>
@@ -582,8 +553,6 @@ namespace TurkishTalk.Persistance.Migrations
             modelBuilder.Entity("TurkishTalk.Persistance.Models.WriteTask", b =>
                 {
                     b.Navigation("ProgresWrite");
-
-                    b.Navigation("Tests");
 
                     b.Navigation("WordDictionary");
                 });
