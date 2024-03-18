@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "question": "Как твои дела",
+    "answers": [],
+    "questionAnswer": "заебок"
+  },
+  {
+    "id": 2,
+    "question": "Сколько сейчас времени",
+    "answers": [],
+    "questionAnswer": "Мало"
+  },
+  {
+    "id": 3,
+    "question": "Когда будет долждь",
+    "answers": [],
+    "questionAnswer": "Мало"
+  },
+  {
+    "id": 4,
+    "question": "Сколько ты спал",
+    "answers": [],
+    "questionAnswer": "Мало"
+  }
+]

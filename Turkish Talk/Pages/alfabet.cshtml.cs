@@ -21,7 +21,15 @@ namespace Turkish_Talk.Pages
 
         public async Task OnGetAsync()
         {
-           TaskTopics = await _applicationDB.Set<AlfabetTask>().Select(x=>x.Name).ToListAsync();
+            TaskTopics = await _applicationDB.Set<AlfabetTask>().Select(x=>x.Name).ToListAsync();
+
+            ActiveTask = await _applicationDB.Set<AlfabetTask>().Include(x => x.WordDictionary).FirstAsync();
+            var words = ActiveTask.WordDictionary;
+            var columnLenght = words.Count / 3;
+            WordsColumn1 = words.Take(columnLenght).ToList();
+            WordsColumn2 = words.Skip(columnLenght).Take(columnLenght).ToList();
+            WordsColumn3 = words.Skip(columnLenght * 2).ToList();
+            Tests = ActiveTask.Tests;
         }
 
         public AlfabetTask ActiveTask { get; set; }

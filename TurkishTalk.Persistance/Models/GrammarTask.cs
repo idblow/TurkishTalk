@@ -10,6 +10,7 @@ namespace TurkishTalk.Persistance.Models
         public required string Rule { get; set; }
 
         public List<TestData> Tests { get; set; }
+        public List<TestData> RadioTests { get; set; }
 
         public required Section Section { get; set; }
         public List<ProgresGrammar> ProgresGrammars { get; set; }

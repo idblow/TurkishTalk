@@ -31,4 +31,8 @@
     <ProjectReference Include="..\TurkishTalk.Persistance\TurkishTalk.Persistance.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DataExamples\" />
+  </ItemGroup>
+
 </Project>

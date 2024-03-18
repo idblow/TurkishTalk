@@ -60,10 +60,7 @@
             <div class="gramma">
                 <h2>Правила:</h2>
                 <p>
-                    @foreach (var item in Model.Rule)
-                    {
-                       <p>@item</p>
-                    }
+                    @Model.Rule
                 </p>
             </div>
             <div class="test_block">
@@ -84,71 +81,21 @@
                     <h2>Тест №2</h2>
                     <div class="question">
                         <ol>
-                            <li>Вопрос 1</li>
-                            <label class="custom-radio">
-                                <input type="radio" value="" checked name="furniture" >
-                                <span>Кухня</span>
-                            </label>
-                            <label class="custom-radio">
-                                <input type="radio" value="" name="furniture">
-                                <span>Шкаф-купе</span>
-                            </label>
-                            <label class="custom-radio">
-                                <input type="radio" value="" name="furniture">
-                                <span>Шкаф-купе</span>
-                            </label>
-                            <li>Вопрос 1</li>
-                            <label class="custom-radio">
-                                <input type="radio" value="" checked name="furniture">
-                                <span>Кухня</span>
-                            </label>
-                            <label class="custom-radio">
-                                <input type="radio" value="" name="furniture">
-                                <span>Шкаф-купе</span>
-                            </label>
-                            <label class="custom-radio">
-                                <input type="radio" value="" name="furniture">
-                                <span>Шкаф-купе</span>
-                            </label>
-                            <li>Вопрос 1</li>
-                            <label class="custom-radio">
-                                <input type="radio" value="" checked name="furniture">
-                                <span>Кухня</span>
-                            </label>
-                            <label class="custom-radio">
-                                <input type="radio" value="" name="furniture">
-                                <span>Шкаф-купе</span>
-                            </label>
-                            <label class="custom-radio">
-                                <input type="radio" value="" name="furniture">
-                                <span>Шкаф-купе</span>
-                            </label>
-                            <li>Вопрос 1</li>
-                            <label class="custom-radio">
-                                <input type="radio" value="" checked name="furniture">
-                                <span>Кухня</span>
-                            </label>
-                            <label class="custom-radio">
-                                <input type="radio" value="" name="furniture">
-                                <span>Шкаф-купе</span>
-                            </label>
-                            <label class="custom-radio">
-                                <input type="radio" value="" name="furniture">
-                                <span>Шкаф-купе</span>
-                            </label>
-                            <li>Вопрос 1</li>
-                            <label class="custom-radio">
-                                <input type="radio" value="" checked name="furniture">
-                                <span>Кухня</span>
-                            </label>
-                            <label class="custom-radio">
-                                <input type="radio" value="" name="furniture">
-                                <span>Шкаф-купе</span>
-                            </label>
-                            <label class="custom-radio">
-                                <input type="radio" value="" name="furniture">
-                                <span>Шкаф-купе</span>
-                            </label>
+
+                            @foreach (var item in Model.RadioTests)
+                            {
+                                <li>@item.Question</li>
+
+                                @foreach (var i in item.Answers)
+                                {
+                                    <label class="custom-radio">
+                                        <input type="radio" value="" checked name="furniture">
+                                        <span>@i</span>
+                                    </label>
+
+                                }
+                            }
+                           
                         </ol>
                     </div>
                     <button class="btn_answer"><p>Ответить</p></button>
