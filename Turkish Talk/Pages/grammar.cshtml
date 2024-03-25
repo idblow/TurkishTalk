@@ -78,21 +78,24 @@
             </p>
         </div>
         <div class="test_block">
-            <div class="test">
-                <h2>Выполни тест</h2>
-                <div class="question">
-                    <ol>
-                        @foreach (var item in Model.Tests)
-                        {
-                            <li>@item.Question</li>
-                            <input type="text" class="text_field" id="@item.Id"/>
-                        }
-                    </ol>
+            <form method="post" asp-page-handler="testsSubmitted">
+                <div class="test">
+                    <h2>Выполни тест</h2>
+                    <div class="question">
+                        <ol>
+                            @foreach (var item in Model.Tests)
+                            {
+                                <li>@item.Question</li>
+                                <input type="text" class="text_field" name="@item.Id" id="@item.Id"/>
+                            }
+                        </ol>
+                    </div>
+                    <button class="btn_answer" onclick="this.form.submit();">
+                        <p>Ответить</p>
+                    </button>
                 </div>
-                <button class="btn_answer">
-                    <p>Ответить</p>
-                </button>
-            </div>
+            </form>
+            <form method="post" asp-page-handler="radioTestsSubmitted">
             <div class="test">
                 <h2>Тест №2</h2>
                 <div class="question">
@@ -105,7 +108,7 @@
                             @foreach (var i in item.Answers)
                             {
                                 <label class="custom-radio">
-                                    <input type="radio" value="" checked name="furniture">
+                                    <input type="radio" value="@i" name="@item.Id">
                                     <span>@i</span>
                                 </label>
                             }
@@ -113,10 +116,11 @@
 
                     </ol>
                 </div>
-                <button class="btn_answer">
+                <button class="btn_answer" onclick="this.form.submit();">
                     <p>Ответить</p>
                 </button>
             </div>
+            </form>
         </div>
         <div class="result">
             <p>Результаты теста: <span>0%</span></p>

@@ -16,7 +16,7 @@ namespace Turkish_Talk.Pages
         public string Rule { get; set; }
         public List<TestData> Tests { get; set; } = new List<TestData>();
 
-        public List<TestData> RadioTests { get; set; } = new List<TestData>() { };
+        public List<TestData> RadioTests { get; set; } = new List<TestData>();
         public async Task OnGetAsync()
         {
             TaskTopics = await _applicationDB.Set<GrammarTask>().Select(x => x.Name).ToListAsync();
@@ -33,5 +33,22 @@ namespace Turkish_Talk.Pages
             Tests = ActiveTask.Tests;
         }
 
+        public async Task OnPostTestsSubmitted(IFormCollection data)
+        {
+            foreach (var testResult in data)
+            {
+                var testId = int.Parse(testResult.Key);
+                var testAnswer = testResult.Value;
+            }   
+        }
+
+        public async Task OnPostRadioTestsSubmittedAsync(IFormCollection data)
+        {
+            foreach (var testResult in data)
+            {
+                var testId = int.Parse(testResult.Key);
+                var testAnswer = testResult.Value;
+            }
+        }
     }
 }
