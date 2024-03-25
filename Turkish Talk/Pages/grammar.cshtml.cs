@@ -29,6 +29,9 @@ namespace Turkish_Talk.Pages
 
         public async Task OnPostTaskSelectedAsync(string taskName)
         {
+            if(string.IsNullOrEmpty(taskName))
+                return;
+            
             ActiveTask = await _applicationDB.Set<GrammarTask>().FirstAsync(x => x.Name == taskName);
             Tests = ActiveTask.Tests;
         }

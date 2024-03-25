@@ -28,9 +28,20 @@ namespace Turkish_Talk.Pages
 
         public async Task OnPostTaskSelectedAsync(string taskName)
         {
+            if(string.IsNullOrEmpty(taskName))
+                return;
+            
             ActiveTask = await _applicationDB.Set<ReadTask>().FirstAsync(x=>x.Name == taskName);
             Tests = ActiveTask.Tests;
         }
-
+        
+        public async Task OnPostTestsSubmittedAsync(IFormCollection data)
+        {
+            foreach (var testResult in data)
+            {
+                var testId = int.Parse(testResult.Key);
+                var testAnswer = testResult.Value;
+            }   
+        }
     }
 }

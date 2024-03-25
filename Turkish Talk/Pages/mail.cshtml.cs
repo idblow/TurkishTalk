@@ -30,5 +30,23 @@ namespace Turkish_Talk.Pages
             if(string.IsNullOrEmpty(taskName))
                 return;
         }
+        public async Task OnPostTestsSubmitted(IFormCollection data)
+        {
+            foreach (var testResult in data)
+            {
+                var testId = int.Parse(testResult.Key);
+                var testAnswer = testResult.Value;
+            }   
+        }
+
+        public async Task OnPostRadioTestsSubmittedAsync(IFormCollection data)
+        {
+            foreach (var testResult in data)
+            {
+                var testId = int.Parse(testResult.Key);
+                var testAnswer = testResult.Value;
+            }
+        }
+        
     }
 }

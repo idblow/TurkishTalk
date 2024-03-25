@@ -99,20 +99,22 @@
                     }
                 </p>
             </div>
+            <form method="post" asp-page-handler="testsSubmitted">
             <div class="test">
                 <div class="question">
                     <ol>
                         @foreach (var item in Model.Tests)
                         {
                             <li>@item.Question</li>
-                            <input type="text" class="text_field" id="@item.Id"/>
+                            <input type="text" class="text_field" name="@item.Id" id="@item.Id"/>
                         }
                     </ol>
                 </div>
-                <button class="btn_answer">
+                <button class="btn_answer" onclick="this.form.submit();">
                     <p>Ответить</p>
                 </button>
             </div>
+            </form>
         </div>
         <div class="result">
             <p>Результаты теста: <span>0%</span></p>
