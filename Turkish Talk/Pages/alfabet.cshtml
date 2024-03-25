@@ -53,8 +53,10 @@
                 <h2>Алфавит</h2>
                 <img src="/img/alfabet.png" alt="">
             </div>
+            <form method="post" asp-page-handler="taskSelected">
+                
             <label class="topic" for="rating">Тема урока: </label>
-            <select class="custom_select" id="rating" name="rating">
+            <select class="custom_select" id="taskName" name="taskName" onchange="this.form.submit();">
 
                 <option value="" selected="selected">Не выбрано</option>
                 @foreach (var item in Model.TaskTopics)
@@ -63,6 +65,7 @@
                 }   
                
             </select>
+            </form>
             <div class="learn">
                 <h2>Выучи слова</h2>
                 <div class="words">

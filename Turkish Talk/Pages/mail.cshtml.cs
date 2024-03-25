@@ -25,5 +25,10 @@ namespace Turkish_Talk.Pages
             FixString = await _applicationDB.Set<WriteTask>().Select(x => x.FixString).ToListAsync();
         }
 
+        public async Task OnPostTaskSelectedAsync(string taskName)
+        {
+            if(string.IsNullOrEmpty(taskName))
+                return;
+        }
     }
 }

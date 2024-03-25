@@ -35,9 +35,9 @@ namespace Turkish_Talk.Pages
         public AlfabetTask ActiveTask { get; set; }
 
 
-        public async Task OnTaskSelected(string name)
+        public async Task OnPostTaskSelectedAsync(string taskName)
         {
-            ActiveTask = await _applicationDB.Set<AlfabetTask>().Include(x=>x.WordDictionary).FirstAsync(x => x.Name == name);
+            ActiveTask = await _applicationDB.Set<AlfabetTask>().Include(x=>x.WordDictionary).FirstAsync(x => x.Name == taskName);
             var words = ActiveTask.WordDictionary;
             var columnLenght = words.Count/3;
             WordsColumn1 = words.Take(columnLenght).ToList();   

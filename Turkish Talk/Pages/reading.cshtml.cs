@@ -26,9 +26,9 @@ namespace Turkish_Talk.Pages
 
         public ReadTask ActiveTask { get; set; }
 
-        public async Task OnTaskSelected(string name)
+        public async Task OnPostTaskSelectedAsync(string taskName)
         {
-            ActiveTask = await _applicationDB.Set<ReadTask>().FirstAsync(x=>x.Name == name);
+            ActiveTask = await _applicationDB.Set<ReadTask>().FirstAsync(x=>x.Name == taskName);
             Tests = ActiveTask.Tests;
         }
 
