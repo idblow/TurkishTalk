@@ -30,6 +30,11 @@ namespace Turkish_Talk.Services
 
             return true;
         }
+        public int? GetUserId()
+        {
+            return _httpContext.Session.GetInt32("userid");
+        }
+
 
         public async Task RegistationUserAsync(string login, string password, string dublicatepassword, string fullname)
         {

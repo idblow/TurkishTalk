@@ -4,7 +4,7 @@
     ViewData["Title"] = "Алфавит";
 }
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-32">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
     <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet">
@@ -109,7 +109,7 @@
         </div>
         <form method="post" asp-page-handler="testsSubmitted">
             <div class="test">
-                <h2>Выполни тест</h2>
+                <h2>Выполни тест № @Model.ActiveTask.Id</h2>
                 <div class="question">
                     <ol>
                         @foreach (var item in Model.Tests)
@@ -126,8 +126,8 @@
             </div>
         </form>
         <div class="result">
-            <p>Результаты теста: <span>0%</span></p>
-            <p style="padding-left: 40px;">Результаты по разделу: <span>0%</span></p> <!-- Model.ActiveTask.ProgressAlfabet%-->
+            <p>Результаты теста: <span>@Model.ProgressCurrentTask%</span></p>
+            <p style="padding-left: 40px;">Результаты по разделу: <span>0%</span></p> 
         </div>
         <p style="font-size: 25px;
         font-weight: 600; margin-top: 0px;">Чтобы получить зачет по данному разделу нужно пройти минимум 4 теста</p>

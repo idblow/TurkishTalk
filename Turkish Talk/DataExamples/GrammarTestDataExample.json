@@ -1,0 +1,55 @@
+﻿[
+  //Грамматика радиотест тема№1
+  {
+    "id": 1,
+    "question": "Выберите правильный перевод слов: старшие сёстры, машины, столы",
+    "answers": [
+      "ablalir, arabalir, masalir",
+      "ablalar, arabalar, masalar",
+      "ablaler, arabaler, masaler"
+    ],
+    "questionAnswer": "ablalar, arabalar, masalar"
+  },
+  {
+    "id": 2,
+    "question": "Выберите правильный перевод слов: шкафы, уроки, тетради",
+    "answers": [
+      "dolapler, derslar, defterlar",
+      "dolaplar, dersler, defterler",
+      "dolaplir, derslir, defterlar"
+    ],
+    "questionAnswer": "dolaplar, dersler, defterler"
+  },
+  //Грамматика тест тема№1
+  {
+    "id": 1,
+    "question": "Образуйте множественное число: öğrenci, kitap, silgi, otobüs, kalem, doktor, köpek, cetvel, tahta, gül, oğul, ağaç",
+    "answers": [],
+    "questionAnswer": "öğrenciler, kitaplar, silgiler, otobüsler, kalemler, doktorlar, köpekler, cetveller, tahtalar, güller, oğullar, ağaçlar"
+  },
+  {
+    "id": 2,
+    "question": "Образуйте множественное число: Araba, masa, öğretmen, sıra, aile, kedi, ders, pencere, çiçek, baba, çanta, müdür, defter, dolap, ev, şehir",
+    "answers": [],
+    "questionAnswer": "Arabalar, masalar, öğretmenler, sıralar, aileler, kediler, dersler, pencereler, çiçekler, babalar, çantalar, müdürler, defterler, dolaplar, evler, şehirler"
+  },
+  //Грамматика радиотест тема№2
+  {
+    "id": 1,
+    "question": "Какие местоимения являются указательными?",
+    "answers": [
+      "Bu ne, Bu masa, Bukim",
+      "Ben, Sen, O",
+      "Bu, şu, O",
+      "Onlar, Biz, Arabalar"
+    ],
+    "questionAnswer": "Ben, Sen, O"
+  },
+  //Грамматика тест тема№2
+  {
+    "id": 1,
+    "question": "Переведите фразы: Это машина(близко), Это сумка(немного дальше), Это окно(далеко)",
+    "answers": [],
+    "questionAnswer": "Bu araba, Şu çanta, О pencere"
+  }
+]
