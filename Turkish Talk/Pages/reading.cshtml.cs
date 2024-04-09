@@ -9,40 +9,71 @@ namespace Turkish_Talk.Pages
     public class readingModel : PageModel
     {
         private readonly ApplicationDBContext _applicationDB;
-        private readonly AuthService authService;
+        private readonly AuthService _authService;
+        private readonly UserService _userService;
         private ProgresRead? _progressCurrentTask;
         public int ProgressCurrentTask => _progressCurrentTask?.scope ?? 0;
 
-        public readingModel(ApplicationDBContext applicationDB, AuthService authService)
+        public readingModel(ApplicationDBContext applicationDB, AuthService authService, UserService userService)
         {
-            this._applicationDB = applicationDB;
-            this.authService = authService;
+            _applicationDB = applicationDB;
+            _authService = authService;
+            _userService = userService;
+
+            var userId = authService.GetUserId();
+
+            if (userId.HasValue)
+            {
+                TaskTopics = _applicationDB.Set<ReadTask>().Select(x => x.Name).ToList();
+
+                var activeTaskQuery = (IQueryable<ReadTask>)_applicationDB.Set<ReadTask>();
+
+                var activeTaskId = _userService.GetValueFromSession("ActiveReadingTaskId");
+                if (!string.IsNullOrEmpty(activeTaskId))
+                {
+                    activeTaskQuery = activeTaskQuery.Where(p => p.Id == int.Parse(activeTaskId));
+                }
+
+                ActiveTask = activeTaskQuery.Include(p => p.ProgresRead
+                    .Where(a => a.User.Id == userId)).First();
+
+                _progressCurrentTask = ActiveTask.ProgresRead.FirstOrDefault();
+                Tests = ActiveTask.Tests;
+                TextReadingExample = ActiveTask.TextReadingExample;
+                QuestionText = ActiveTask.QuestionText;
+
+                _userService.StoreValueInSession("ActiveReadingTaskId", ActiveTask.Id.ToString());
+            }
         }
+
         public List<string> TaskTopics { get; set; } = new List<string>();
         public string TextReadingExample { get; set; }
-        public string QuestionText { get; set; } 
+        public string QuestionText { get; set; }
         public List<TestData> Tests { get; set; } = new List<TestData>();
 
-        public async Task OnGetAsync()
-        {
-            TaskTopics = await _applicationDB.Set<ReadTask>().Select(x => x.Name).ToListAsync();
-            ActiveTask = await _applicationDB.Set<ReadTask>().FirstAsync();
-            Tests = ActiveTask.Tests;
-            TextReadingExample = ActiveTask.TextReadingExample;
-            QuestionText = ActiveTask.QuestionText;
-        }
 
         public ReadTask ActiveTask { get; set; }
 
         public async Task OnPostTaskSelectedAsync(string taskName)
         {
-            if(string.IsNullOrEmpty(taskName))
+            if (string.IsNullOrEmpty(taskName))
+                return;
+
+            var userId = _authService.GetUserId();
+            if(!userId.HasValue)
                 return;
             
-            ActiveTask = await _applicationDB.Set<ReadTask>().FirstAsync(x=>x.Name == taskName);
+            ActiveTask = await _applicationDB.Set<ReadTask>().Include(p => p.ProgresRead
+                .Where(a => a.User.Id == userId)).FirstAsync(x => x.Name == taskName);
+
+            _progressCurrentTask = ActiveTask.ProgresRead.FirstOrDefault();
             Tests = ActiveTask.Tests;
+            TextReadingExample = ActiveTask.TextReadingExample;
+            QuestionText = ActiveTask.QuestionText;
+
+            _userService.StoreValueInSession("ActiveReadingTaskId", ActiveTask.Id.ToString());
         }
-        
+
         public async Task OnPostTestsSubmittedAsync(IFormCollection data)
         {
             var correctAnswerCount = 0;
@@ -60,7 +91,7 @@ namespace Turkish_Talk.Pages
 
             var totalTestsCount = Tests.Count();
             var progress = (correctAnswerCount * 100) / totalTestsCount;
-            var userid = authService.GetUserId();
+            var userid = _authService.GetUserId();
             var user = _applicationDB.Set<User>().First(x => x.Id == userid);
             if (_progressCurrentTask == null)
             {
@@ -72,6 +103,7 @@ namespace Turkish_Talk.Pages
                 _progressCurrentTask.scope = progress;
                 _applicationDB.Update(_progressCurrentTask);
             }
+
             _applicationDB.SaveChanges();
         }
     }

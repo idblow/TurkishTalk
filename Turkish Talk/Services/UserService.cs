@@ -17,6 +17,16 @@ namespace Turkish_Talk.Services
             _httpContext = httpContext.HttpContext!;
         }
 
+        public void StoreValueInSession(string key, string value)
+        {
+            _httpContext.Session.SetString(key, value);
+        }
+
+        public string? GetValueFromSession(string key)
+        {
+            return _httpContext.Session.GetString(key);
+        }
+
         private int? GetUserIdFromSession()
         {
             return _httpContext.Session.GetInt32("userid");

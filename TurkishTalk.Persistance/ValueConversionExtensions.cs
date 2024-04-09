@@ -7,18 +7,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Unicode;
 using System.Threading.Tasks;
 
 namespace TurkishTalk.Persistance
 {
     public static class ValueConversionExtensions
     {
-        public static PropertyBuilder<T> HasJsonConversion<T>(this PropertyBuilder<T> propertyBuilder) where T : class, new()
+        public static PropertyBuilder<T> HasJsonBase64Conversion<T>(this PropertyBuilder<T> propertyBuilder) where T : class, new()
         {
             ValueConverter<T, string> converter = new ValueConverter<T, string>
             (
-                v => JsonConvert.SerializeObject(v),
-                v => JsonConvert.DeserializeObject<T>(v) ?? new T()
+                v => System.Convert.ToBase64String(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(v))),
+                v => JsonConvert.DeserializeObject<T>(Encoding.UTF8.GetString(Convert.FromBase64String(v))) ?? new T()
             );
 
             ValueComparer<T> comparer = new ValueComparer<T>
