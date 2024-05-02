@@ -13,7 +13,8 @@ builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddTransient<AuthService>();
 builder.Services.AddTransient<UserService>();
-
+builder.Services.AddControllers();
+//builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();
@@ -34,6 +35,17 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.MapControllers();
+
 app.MapRazorPages();
+
+
+
+//app.UseSwagger();
+//app.UseSwaggerUI(opt =>
+//{
+//    opt.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+//    opt.RoutePrefix = string.Empty;
+//});
 
 app.Run();

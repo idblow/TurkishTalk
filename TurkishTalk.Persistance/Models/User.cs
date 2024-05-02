@@ -15,7 +15,8 @@ namespace TurkishTalk.Persistance.Models
 
         public required string Salt { get; set; }
 
-        // public required byte[] Image { get; set;}
+        public byte[]? Image { get; set; }
+        public string? ImageContentType { get; set; }
 
         public UserRole Role { get; set; } = UserRole.User;
 
