@@ -32,14 +32,14 @@ namespace Turkish_Talk.Pages
                 {
                     activeTaskQuery = activeTaskQuery.Where(p => p.Id == int.Parse(activeTaskId));
                 }
-                
+
                 ActiveTask = activeTaskQuery.Include(p => p.ProgresGrammars
-                    .Where(a => a.User.Id == userId)).First();
+                    .Where(a => a.User.Id == userId)).FirstOrDefault();
 
 
                 _progressCurrentTask = ActiveTask.ProgresGrammars.FirstOrDefault();
                 _userService.StoreValueInSession("ActiveGrammarTaskId", ActiveTask.Id.ToString());
-                
+
                 Tests = ActiveTask.Tests;
                 RadioTests = ActiveTask.RadioTests;
                 Rule = ActiveTask.Rule;
@@ -50,28 +50,28 @@ namespace Turkish_Talk.Pages
         public List<TestData> Tests { get; set; } = new List<TestData>();
 
         public List<TestData> RadioTests { get; set; } = new List<TestData>();
-       
-        
+
+
         public GrammarTask ActiveTask { get; set; }
 
         public async Task OnPostTaskSelectedAsync(string taskName)
         {
-            if(string.IsNullOrEmpty(taskName))
+            if (string.IsNullOrEmpty(taskName))
                 return;
 
             var userId = _authService.GetUserId();
-            if(!userId.HasValue)
+            if (!userId.HasValue)
                 return;
-                
+
             ActiveTask = await _applicationDB.Set<GrammarTask>().Include(p => p.ProgresGrammars
                 .Where(a => a.User.Id == userId)).FirstAsync(x => x.Name == taskName);
-            
+
             _progressCurrentTask = ActiveTask.ProgresGrammars.FirstOrDefault();
-                
+
             Tests = ActiveTask.Tests;
             RadioTests = ActiveTask.RadioTests;
             Rule = ActiveTask.Rule;
-            
+
             _userService.StoreValueInSession("ActiveGrammarTaskId", ActiveTask.Id.ToString());
         }
 
@@ -81,7 +81,10 @@ namespace Turkish_Talk.Pages
 
             foreach (var testResult in data)
             {
-                var testId = int.Parse(testResult.Key);
+                if (!int.TryParse(testResult.Key, out var testId))
+                {
+                    continue;
+                }
                 var testAnswer = testResult.Value;
                 var test = Tests.First(x => x.Id == testId);
                 if (test.QuestionAnswer == testAnswer)

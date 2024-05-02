@@ -9,6 +9,7 @@
     <title>@ViewData["Title"]</title>
     <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet">
     <link rel="stylesheet" href="~/css/alfabet.css">
+    <link rel="stylesheet" href="~/css/modal.css">
     <link rel="shortcut icon" href="/img/logo_title.svg" type="image/png">
 </head>
 <body>
@@ -164,6 +165,19 @@
         </div>
     </div>
 </footer>
-<script src="/js/header_scroll.js"></script>
+    <div id="openModal" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
+                <div class="modal-body">
+                    <p>Тест №1 <br> решен правильно</p>
+                </div>
+                <div class="modal-header">
+                    <a href="#close" title="Close" class="close">ОКЕЙ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="/js/header_scroll.js"></script>
+    <script src="/js/modal.js"></script>
 </body>

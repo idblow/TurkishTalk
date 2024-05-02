@@ -35,14 +35,14 @@ namespace Turkish_Talk.Pages
                 }
 
                 ActiveTask = activeTaskQuery.Include(p => p.ProgresRead
-                    .Where(a => a.User.Id == userId)).First();
+                    .Where(a => a.User.Id == userId)).FirstOrDefault();
 
-                _progressCurrentTask = ActiveTask.ProgresRead.FirstOrDefault();
-                Tests = ActiveTask.Tests;
-                TextReadingExample = ActiveTask.TextReadingExample;
-                QuestionText = ActiveTask.QuestionText;
+                _progressCurrentTask = ActiveTask?.ProgresRead.FirstOrDefault();
+                Tests = ActiveTask?.Tests;
+                TextReadingExample = ActiveTask?.TextReadingExample;
+                QuestionText = ActiveTask?.QuestionText;
 
-                _userService.StoreValueInSession("ActiveReadingTaskId", ActiveTask.Id.ToString());
+                _userService.StoreValueInSession("ActiveReadingTaskId", ActiveTask?.Id.ToString());
             }
         }
 
@@ -80,7 +80,10 @@ namespace Turkish_Talk.Pages
 
             foreach (var testResult in data)
             {
-                var testId = int.Parse(testResult.Key);
+                if (!int.TryParse(testResult.Key, out var testId))
+                {
+                    continue;
+                }
                 var testAnswer = testResult.Value;
                 var test = Tests.First(x => x.Id == testId);
                 if (test.QuestionAnswer == testAnswer)

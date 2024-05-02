@@ -32,7 +32,10 @@
                 <input name ="login" type="email" placeholder="Email" />
                 <input name="password" type="password" placeholder="Пароль" />
                 <input name="doublepassword" type="password" placeholder="Подтверждение пароля" />
-                <button>Зарегистрироваться</button>
+                <button id="image" style="display:block;width:120px; height:30px;" onclick="document.getElementById('getFile').click()">Загрузить аватар</button>
+                <input name="picture" type="file" id="getFile" style="display:none">
+                <input type="submit" id="submit" style="display:none" onclick="document.getElementById('getFile').click()"/>
+                <button onclick="document.getElementById('submit').click()">Зарегистрироваться</button>
             </form>
         </div>
         <div class="form-container sign-in-container">

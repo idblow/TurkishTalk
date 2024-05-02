@@ -37,7 +37,7 @@ namespace Turkish_Talk.Pages
                 }
 
                 ActiveTask = activeTaskQuery.Include(p => p.ProgresWrite
-                    .Where(a => a.User.Id == userId)).First();
+                    .Where(a => a.User.Id == userId)).FirstOrDefault();
 
                 _progressCurrentTask = ActiveTask.ProgresWrite.FirstOrDefault();
                 Rule = ActiveTask.Rule;
@@ -79,7 +79,11 @@ namespace Turkish_Talk.Pages
         {
             foreach (var testResult in data)
             {
-                var testId = int.Parse(testResult.Key);
+                if (!int.TryParse(testResult.Key, out var testId))
+                {
+                    continue;
+                }
+                
                 var testAnswer = testResult.Value;
             }
         }
@@ -88,7 +92,10 @@ namespace Turkish_Talk.Pages
         {
             foreach (var testResult in data)
             {
-                var testId = int.Parse(testResult.Key);
+                if (!int.TryParse(testResult.Key, out var testId))
+                {
+                    continue;
+                }
                 var testAnswer = testResult.Value;
             }
         }

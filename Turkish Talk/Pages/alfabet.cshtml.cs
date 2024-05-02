@@ -77,7 +77,9 @@ namespace Turkish_Talk.Pages
             WordsColumn2 = words.Skip(columnLenght).Take(columnLenght).ToList();
             WordsColumn3 = words.Skip(columnLenght * 2).ToList();
             Tests = ActiveTask.Tests;
-            
+            _progressCurrentTask = ActiveTask.ProgressAlfabet.FirstOrDefault();
+
+
             _userService.StoreValueInSession("ActiveAlphabetTask", ActiveTask.Id.ToString());
         }
 
@@ -87,7 +89,11 @@ namespace Turkish_Talk.Pages
 
             foreach (var testResult in data)
             {
-                var testId = int.Parse(testResult.Key);
+                if(!int.TryParse(testResult.Key, out var testId))
+                {
+                    continue;
+                }
+
                 var testAnswer = testResult.Value;
                 var test = Tests.First(x => x.Id == testId);
                 if(test.QuestionAnswer == testAnswer)
