@@ -21,35 +21,102 @@
     "questionAnswer": "dolaplar, dersler, defterler"
   },
   //Грамматика тест тема№1
+
   {
     "id": 1,
-    "question": "Образуйте множественное число: öğrenci, kitap, silgi, otobüs, kalem, doktor, köpek, cetvel, tahta, gül, oğul, ağaç",
+    "question": "öğrenci",
     "answers": [],
-    "questionAnswer": "öğrenciler, kitaplar, silgiler, otobüsler, kalemler, doktorlar, köpekler, cetveller, tahtalar, güller, oğullar, ağaçlar"
+    "questionAnswer": "öğrenciler"
   },
   {
     "id": 2,
-    "question": "Образуйте множественное число: Araba, masa, öğretmen, sıra, aile, kedi, ders, pencere, çiçek, baba, çanta, müdür, defter, dolap, ev, şehir",
+    "question": "kitap",
     "answers": [],
-    "questionAnswer": "Arabalar, masalar, öğretmenler, sıralar, aileler, kediler, dersler, pencereler, çiçekler, babalar, çantalar, müdürler, defterler, dolaplar, evler, şehirler"
+    "questionAnswer": "kitaplar"
   },
+  {
+    "id": 3,
+    "question": "silgi",
+    "answers": [],
+    "questionAnswer": "silgiler"
+  },
+  {
+    "id": 4,
+    "question": "otobüs",
+    "answers": [],
+    "questionAnswer": "otobüsler"
+  },
+  {
+    "id": 5,
+    "question": "kalem",
+    "answers": [],
+    "questionAnswer": "kalemler"
+  },
+  {
+    "id": 6,
+    "question": "araba",
+    "answers": [],
+    "questionAnswer": "arabalar"
+  },
+
   //Грамматика радиотест тема№2
-  {
-    "id": 1,
-    "question": "Какие местоимения являются указательными?",
-    "answers": [
-      "Bu ne, Bu masa, Bukim",
-      "Ben, Sen, O",
-      "Bu, şu, O",
-      "Onlar, Biz, Arabalar"
-    ],
-    "questionAnswer": "Ben, Sen, O"
-  },
-  //Грамматика тест тема№2
-  {
-    "id": 1,
-    "question": "Переведите фразы: Это машина(близко), Это сумка(немного дальше), Это окно(далеко)",
-    "answers": [],
-    "questionAnswer": "Bu araba, Şu çanta, О pencere"
-  }
-]
+  [
+    {
+      "id": 1,
+      "question": "Какие местоимения являются указательными?",
+      "answers": [
+        "Bu ne, Bu masa, Bukim",
+        "Ben, Sen, O",
+        "Bu, şu, O",
+        "Onlar, Biz, Arabalar"
+      ],
+      "questionAnswer": "Ben, Sen, O"
+    },
+    {
+      "id": 2,
+      "question": "Какое слово используется,чтобы выразить отрицание",
+      "answers": [
+        "mi",
+        "me",
+        "mu"
+      ],
+      "questionAnswer": "mi"
+    },
+    {
+      "id": 3,
+      "question": "Выберите вопросительную частицу",
+      "answers": [
+        "mi",
+        "me",
+        "mu"
+      ],
+      "questionAnswer": "mu"
+    },
+
+    //Грамматика тест тема№2
+    [
+    {
+      "id": 1,
+      "question": "Это машина(близко)",
+      "answers": [],
+      "questionAnswer": "Bu araba"
+    },
+    {
+      "id": 2,
+      "question": "Это сумка(немного дальше)",
+      "answers": [],
+      "questionAnswer": "Şu çanta"
+    },
+    {
+      "id": 3,
+      "question": "Это окно(далеко)",
+      "answers": [],
+      "questionAnswer": "О pencere"
+    },
+    {
+      "id": 1,
+      "question": "Это мама(близко)",
+      "answers": [],
+      "questionAnswer": "Bu anne"
+    }
+  ]
