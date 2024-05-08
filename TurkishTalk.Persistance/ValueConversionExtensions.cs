@@ -36,5 +36,28 @@ namespace TurkishTalk.Persistance
 
             return propertyBuilder;
         }
+        
+        public static PropertyBuilder<string> HasBase64Conversion(this PropertyBuilder<string> propertyBuilder)
+        {
+            ValueConverter<string, string> converter = new ValueConverter<string, string>
+            (
+                v => System.Convert.ToBase64String(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(v))),
+                v => Encoding.UTF8.GetString(Convert.FromBase64String(v)) ?? string.Empty
+            );
+
+            ValueComparer<string> comparer = new ValueComparer<string>
+            (
+                (l, r) => string.Equals(l, r),
+                v => v == null ? 0 : v.GetHashCode(),
+                v => v
+            );
+
+            propertyBuilder.HasConversion(converter);
+            propertyBuilder.Metadata.SetValueConverter(converter);
+            propertyBuilder.Metadata.SetValueComparer(comparer);
+            propertyBuilder.HasColumnType("text");
+
+            return propertyBuilder;
+        }
     }
 }
