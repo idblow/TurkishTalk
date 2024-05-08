@@ -1,71 +1,130 @@
 [ //Алфавит тема №1
   {
     "id": 1,
-    "question": "Переведи слова через запятую: семья, мама, папа, сын, дочь, старшая сестра, старший брат",
+    "question": "мама, папа",
     "answers": [],
-    "questionAnswer": "aile, anne, baba, oğul, kız, abla, ağabey"
+    "questionAnswer": "Aile, anne"
   },
   {
     "id": 2,
-    "question": "Переведи слова через запятую: büyük anne, büyük baba, hala, amca, karı, koca",
+    "question": "сын, дочь",
     "answers": [],
-    "questionAnswer": "бабушка, дедушка, тётя, дядя, жена, муж"
+    "questionAnswer": "Oğul, kız"
   },
   {
     "id": 3,
-    "question": "Переведи предложения через запятую: Где брат?, Дедушка в машине?, Куда идет сестра?, Бабушка не идет на базар?",
+    "question": "старшая сестра, старший брат",
     "answers": [],
-    "questionAnswer": "erkek kardeş nerede?, büyükbabam arabada mı?, kız kardeş nereye gidiyor?, büyükannem çarşıya gitmiyor?"
+    "questionAnswer": "Abla, ağabey"
   },
   {
     "id": 4,
-    "question": "Переведи предложения через запятую: Bugün anne pazara gidiyor, Ağabey ofise gitmiyor mu?, Büyük anne çay içiyor, Abla evden çıkıyor, Hala televizyon seyretmiyor",
+    "question": "тётя, дядя",
     "answers": [],
-    "questionAnswer": "сегодня мама идет на базар, Брат не идет в офис?, бабушка пьет чай, сестра выходит из дома, тетя не смотрит телевизор"
+    "questionAnswer": "Hala, amca"
   },
   {
     "id": 5,
-    "question": "Ответьте на вопросы по-турецки: У тебя есть сестра?, Сколько лет брату?, Как зовут твою маму?, Где работает твоя тётя?, Что любит папа?, Любимый день недели бабушки?",
+    "question": "büyük anne, büyük baba, karı, koca",
     "answers": [],
-    "questionAnswer": "evet bir kız kardeşim var, erkek kardeşim beş yaşında, annemin adı Svetlana, halam sağlık görevlisi, babam film izlemeyi seviyor, büyükannem çarşambayı seviyor"
+    "questionAnswer": "Бабушка, дедушка, жена, муж"
   },
+  {
+    "id": 6,
+    "question": "Где брат?, Дедушка в машине?, Куда идет сестра?, Бабушка не идет на базар?",
+    "answers": [],
+    "questionAnswer": "Erkek kardeş nerede?, büyükbabam arabada mı?, kız kardeş nereye gidiyor?, büyükannem çarşıya gitmiyor?"
+  },
+  {
+    "id": 7,
+    "question": "Дедушка в машине?",
+    "answers": [],
+    "questionAnswer": "Büyükbabam arabada mı?"
+  },
+  {
+    "id": 8,
+    "question": "Bugün anne pazara gidiyor",
+    "answers": [],
+    "questionAnswer": "Сегодня мама идет на базар"
+  },
+  {
+    "id": 9,
+    "question": "Ağabey ofise gitmiyor mu?",
+    "answers": [],
+    "questionAnswer": "Брат не идет в офис?"
+  },
+  {
+    "id": 10,
+    "question": "Büyük anne çay içiyor",
+    "answers": [],
+    "questionAnswer": "Бабушка пьет чай"
+  }
+
 
 
   //Алфавит тема№2
   [
-  {
-    "id": 1,
-    "question": "Переведи слова через запятую: девочка, мальчик, младенец, подросток, мужчина, женщина, сосед, гость",
-    "answers": [],
-    "questionAnswer": "kız, erkek, bebek, genç, erkek, kadın, komşu, misafir"
-  },
-  {
-    "id": 2,
-    "question": "Переведи слова через запятую: meslektaşım, yabancı, kahraman, akraba, insanlar, vatandaş, ortak",
-    "answers": [],
-    "questionAnswer": "коллега, незнакомец, герой, родственник, люди, гражданин, партнер"
-  },
-  {
-    "id": 3,
-    "question": "Переведи предложения через запятую: Девочка играет в мяч, Младенец плачет, Где тот герой?, Моего коллегу зовут Омар",
-    "answers": [],
-    "questionAnswer": "kız top oynuyor, bebek ağlıyor, o kahraman nerede?, meslektaşımın adı Omar?"
-  },
-  {
-    "id": 4,
-    "question": "Переведи предложения через запятую: Bu çift sevimli görünüyor, Akrabam Fransa'da yaşıyor, iş ortağının adı Selit, Genç resim yapıyor",
-    "answers": [],
-    "questionAnswer": "эта пара выглядит милой, мой родственник живет во Франции, партнера по бизнесу зовут Селит, подросток рисует картину"
-  },
-  {
-    "id": 5,
-    "question": "Ответьте на вопросы по-турецки: Как зовут твоего коллегу? Сколько девочек с тобой учится? У тебя хорошие соседи? Ты любишь приглашать гостей?",
-    "answers": [],
-    "questionAnswer": "meslektaşımın adı Amir, benimle okuyan üç kız var, iyi komşularım var, misafir davet etmeyi sevmiyorum"
-  }
- 
-
-]
+    {
+      "id": 1,
+      "question": "Девочка, мальчик",
+      "answers": [],
+      "questionAnswer": "Kız, erkek"
+    },
+    {
+      "id": 2,
+      "question": "Младенец, подросток",
+      "answers": [],
+      "questionAnswer": "Bebek, genç"
+    },
+    {
+      "id": 3,
+      "question": "Mужчина, Женщина",
+      "answers": [],
+      "questionAnswer": "Erkek, kadın"
+    },
+    {
+      "id": 4,
+      "question": "Девочка играет в мяч",
+      "answers": [],
+      "questionAnswer": "Kız top oynuyor"
+    },
+    {
+      "id": 5,
+      "question": "meslektaşım, vatandaş",
+      "answers": [],
+      "questionAnswer": "Kоллега, гражданин"
+    },
+    {
+      "id": 6,
+      "question": "Моего коллегу зовут Омар",
+      "answers": [],
+      "questionAnswer": "Meslektaşımın adı Omar"
+    },
+    {
+      "id": 7,
+      "question": "Bu çift sevimli görünüyor",
+      "answers": [],
+      "questionAnswer": "Эта пара выглядит милой, "
+    },
+    {
+      "id": 8,
+      "question": "Akrabam Fransa'da yaşıyor",
+      "answers": [],
+      "questionAnswer": "Мой родственник живет во Франции"
+    },
+    {
+      "id": 9,
+      "question": "Genç resim yapıyor",
+      "answers": [],
+      "questionAnswer": "Подросток рисует картину"
+    },
+    {
+      "id": 10,
+      "question": "Iş ortağının adı Selit",
+      "answers": [],
+      "questionAnswer": "Партнера по бизнесу зовут Селит"
+    }
+  ]
 
 
 
