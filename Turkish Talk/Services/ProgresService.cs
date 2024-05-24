@@ -48,16 +48,16 @@ namespace Turkish_Talk.Services
 
             return true;
         }
-        public async Task<bool> CheckingReadResponsesAsync(string answer)
-        {
-            var read_task_result = await _applicationDB.Set<ReadTask>().AnyAsync(x => x.FixStringCorrect == answer);
+        //public async Task<bool> CheckingReadResponsesAsync(string answer)
+        //{
+        //    var read_task_result = await _applicationDB.Set<ReadTask>().AnyAsync(x => x.FixStringCorrect == answer);
             
-            if(!read_task_result)
-            {
-                return false;
-            }
-            return true;
-        }
+        //    if(!read_task_result)
+        //    {
+        //        return false;
+        //    }
+        //    return true;
+        //}
         public async Task<bool> CheckingTestAsync(int questionId, int selectedAnswerId)
         {
             var correctAnswerId = _applicationDB.Set<WriteTask>().Where(x => x.Id == questionId).Select(x => x.Id).FirstOrDefault();

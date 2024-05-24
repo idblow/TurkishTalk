@@ -5,7 +5,7 @@
         public string FullName { get; set; }
 
         public int TotalScore { get; set; }
-
+        public int Id { get; set; }
         public int ScoreWrite { get; set; }
         public int ScoreRead { get; set; }
         public int ScoreGrammar { get; set; }

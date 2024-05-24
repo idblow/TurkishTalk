@@ -55,6 +55,44 @@ namespace Turkish_Talk.Controllers
             return Ok();
 
         }
+        [HttpGet("GetReadingTaskVoiceExample/{taskId}")]
+        public async Task<ActionResult> GetReadingTaskVoiceExample([Required][FromRoute] int taskId)
+        {
+            var task = await _applicationDBContext.Set<ReadTask>().FirstOrDefaultAsync(x => x.Id == taskId);
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            if (task.VoiceExample == null)
+            {
+                return NoContent();
+            }
+
+            return File(task.VoiceExample, task.VoiceExampleMimeType);
+
+        }
+
+        [HttpPost("UploadReadingTaskVoiceExample/{taskId}")]
+        public async Task<ActionResult> UploadReadingTaskVoiceExample([Required][FromRoute] int taskId, IFormFile formFile)
+        {
+            var task = await _applicationDBContext.Set<ReadTask>().FirstOrDefaultAsync(x => x.Id == taskId);
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            task.VoiceExample = formFile.OpenReadStream().ToArray();
+
+            task.VoiceExampleMimeType = formFile.ContentType;
+
+            _applicationDBContext.Update(task);
+
+            await _applicationDBContext.SaveChangesAsync();
+
+            return Ok();
+
+        }
 
     }
 }

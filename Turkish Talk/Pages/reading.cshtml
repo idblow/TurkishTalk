@@ -72,7 +72,7 @@
         <form method="post" asp-page-handler="taskSelected">
             <select class="custom_select" id="taskName" name="taskName" onchange="this.form.submit();">
 
-                <option value="" selected="selected">Не выбрано</option>
+                <option value="" selected="selected">@Model.ActiveTask.Name</option>
                 @foreach (var item in Model.TaskTopics)
                 {
                     <option value="@item">@item</option>
@@ -83,10 +83,10 @@
         <div class="reading">
             <h2>Пример чтения текста</h2>
             <p>
-                @foreach (var item in Model.TextReadingExample)
-                {
-                    <p>@item</p>
-                }
+                @Model.TextReadingExample
+                <audio controls>
+                        <source src="api/storage/GetReadingTaskVoiceExample/@Model.ActiveTask.Id" type="audio/ogg" />
+                </audio>
             </p>
         </div>
         <p style="font-size: 25px;
@@ -94,28 +94,25 @@
         <div class="test_block">
             <div class="learn">
                 <p>
-                    @foreach (var item in Model.QuestionText)
-                    {
-                        <p>@item</p>
-                    }
+                        <form method="post" asp-page-handler="testsSubmitted">
+                            <div class="test">
+                                <div class="question">
+                                    <ol>
+                                        @foreach (var item in Model.Tests)
+                                        {
+                                            <li>@item.Question</li>
+                                            <input type="text" class="text_field" name="@item.Id" id="@item.Id" />
+                                        }
+                                    </ol>
+                                </div>
+                                <button class="btn_answer" onclick="this.form.submit();">
+                                    <p>Ответить</p>
+                                </button>
+                            </div>
+                        </form>
                 </p>
             </div>
-            <form method="post" asp-page-handler="testsSubmitted">
-            <div class="test">
-                <div class="question">
-                    <ol>
-                        @foreach (var item in Model.Tests)
-                        {
-                            <li>@item.Question</li>
-                            <input type="text" class="text_field" name="@item.Id" id="@item.Id"/>
-                        }
-                    </ol>
-                </div>
-                <button class="btn_answer" onclick="this.form.submit();">
-                    <p>Ответить</p>
-                </button>
-            </div>
-            </form>
+            
         </div>
         <div class="result">
             <p>Результаты теста: <span>@Model.ProgressCurrentTask%</span></p>

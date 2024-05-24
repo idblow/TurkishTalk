@@ -1,0 +1,126 @@
+﻿//тест 1
+[
+  {
+    "id": 1,
+    "question": "Kitap (a) ->",
+    "answers": [
+      "Kitapa",
+      "Kitaba",
+      "Kitabe"
+    ],
+    "questionAnswer": "Kitaba"
+  },
+  {
+    "id": 2,
+    "question": "Ağaç (ı) ->",
+    "answers": [
+      "Ağacı",
+      "Ağaci",
+      "Ağace"
+    ],
+    "questionAnswer": "Ağacı"
+  },
+  {
+    "id": 3,
+    "question": "Ekmek (e) ->",
+    "answers": [
+      "Ekmeğe",
+      "Ekmeği",
+      "Ekmeki"
+    ],
+    "questionAnswer": "Ekmeğe"
+  },
+  {
+    "id": 4,
+    "question": "Tat (ı) ->",
+    "answers": [
+      "Tadi",
+      "Tatı",
+      "Tadı"
+    ],
+    "questionAnswer": "Tadı"
+  },
+  {
+    "id": 5,
+    "question": "Denk (i) ->",
+    "answers": [
+      "Denge",
+      "Denki",
+      "Dengi"
+    ],
+    "questionAnswer": "Dengi"
+  },
+  {
+    "id": 6,
+    "question": "Kulak (ı) ->",
+    "answers": [
+      "Kulaği",
+      "Kulağı",
+      "Kulaki"
+    ],
+    "questionAnswer": "Kulağı"
+  }
+]
+//тест2
+[
+  {
+    "id": 1,
+    "question": "Ben avukat",
+    "answers": [
+      "avukatsın",
+      "avukatsın",
+      "avukatsın"
+    ],
+    "questionAnswer": "avukatsın"
+  },
+  {
+    "id": 2,
+    "question": "Biz doktor",
+    "answers": [
+      "doktor",
+      "doktoruz",
+      "doktorsunuz"
+    ],
+    "questionAnswer": "doktoruz"
+  },
+  {
+    "id": 3,
+    "question": "O evli",
+    "answers": [
+      "evliyiz",
+      "evliyiz",
+      "evli"
+    ],
+    "questionAnswer": "evli"
+  },
+  {
+    "id": 4,
+    "question": "Onlar doktor",
+    "answers": [
+      "doktorsunuz",
+      "doktorlar",
+      "doktorsun"
+    ],
+    "questionAnswer": "doktorlar"
+  },
+  {
+    "id": 5,
+    "question": "Ben hasta",
+    "answers": [
+      "hastayım",
+      "hastasın",
+      "hastasınız"
+    ],
+    "questionAnswer": "hastayım"
+  },
+  {
+    "id": 6,
+    "question": "Siz mühendis",
+    "answers": [
+      "mühendissin",
+      "mühendissen",
+      "mühendissiniz"
+    ],
+    "questionAnswer": "mühendissiniz"
+  }
+]

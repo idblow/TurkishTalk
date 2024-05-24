@@ -24,7 +24,6 @@ namespace Turkish_Talk.Pages
 
             if (userId.HasValue)
             {
-                TaskTopics = _applicationDB.Set<ReadTask>().Select(x => x.Name).ToList();
 
                 var activeTaskQuery = (IQueryable<ReadTask>)_applicationDB.Set<ReadTask>();
 
@@ -37,8 +36,12 @@ namespace Turkish_Talk.Pages
                 ActiveTask = activeTaskQuery.Include(p => p.ProgresRead
                     .Where(a => a.User.Id == userId)).FirstOrDefault();
 
+                var activeTaskName = ActiveTask?.Name ?? string.Empty;
+
+                TaskTopics = _applicationDB.Set<ReadTask>().Where(x => x.Name != activeTaskName).Select(x => x.Name).ToList();
+
                 _progressCurrentTask = ActiveTask?.ProgresRead.FirstOrDefault();
-                Tests = ActiveTask?.Tests;
+                Tests = ActiveTask?.Tests ?? new List<TestData>();
                 TextReadingExample = ActiveTask?.TextReadingExample;
                 QuestionText = ActiveTask?.QuestionText;
 
@@ -60,9 +63,9 @@ namespace Turkish_Talk.Pages
                 return;
 
             var userId = _authService.GetUserId();
-            if(!userId.HasValue)
+            if (!userId.HasValue)
                 return;
-            
+
             ActiveTask = await _applicationDB.Set<ReadTask>().Include(p => p.ProgresRead
                 .Where(a => a.User.Id == userId)).FirstAsync(x => x.Name == taskName);
 

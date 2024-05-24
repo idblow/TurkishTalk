@@ -1,25 +1,25 @@
 ﻿@page
 @model Turkish_Talk.Pages.adminModel
 @{
-
+    ViewData["Title"] = "Кабинет администратора";
 }
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet">
-    <title>Администрация</title>
-    <link rel="shortcut icon" href="/image/logo_title.svg" type="image/png">
+    <link rel="stylesheet" href="~/css/admin.css">
+    <link rel="shortcut icon" href="/img/logo_title.svg" type="image/png">
 </head>
 <body>
 <header id="header">
     <div class="container">
         <nav class="header-line">
             <ul class="navbar">
-            <li><a href="/index.html"><img src="/image/logo_black.svg.svg"></a></li>
+            <li><a href="/"><img src="/img/main_back.svg"></a></li>
             <li><a href="#">Удалить пользователя</a></li>
             <li><a href="#">Изменить пользователя</a></li>
-            <li><a href="login/auth.html">Выйти</a></li>
+            <li><a href="/login">Выйти</a></li>
             </ul>
         </nav>
     </div>
@@ -239,7 +239,7 @@
     <div class="container">
         <div class="footer_line">
             <div class="footer_logo">
-                <a href="#top"><img src="/image/logo.svg"></a>
+                <a href="#top"><img src="/img/logo.svg"></a>
             </div>
             <div class="text_footer">
                 <p><span>Turkish Talk -</span><br>тренажёр самоучитель по турецкому языку<br> на интерактивной платформе</p>

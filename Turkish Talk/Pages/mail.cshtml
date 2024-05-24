@@ -76,10 +76,7 @@
         <div class="mail">
             <h2>Правила:</h2>
             <p>
-                @foreach (var item in Model.Rule)
-                {
-                    <p>@item</p>
-                }
+                    @Model.Rule
             </p>
         </div>
         <p style="font-size: 25px;
@@ -104,7 +101,7 @@
                 </div>
                 <select class="custom_select" id="rating" name="rating">
                     <option value="" selected="selected">Не выбрано</option>
-                    @foreach (var item in Model.FixString)
+                    @foreach (var item in Model.TaskTopics)
                     {
                         <option value="">@item</option>
                     }

@@ -5,6 +5,10 @@ namespace Turkish_Talk.Pages
 {
     public class adminModel : PageModel
     {
+        public adminModel()
+        {
+            
+        }
         public void OnGet()
         {
         }

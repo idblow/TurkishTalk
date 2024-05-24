@@ -10,6 +10,8 @@ namespace TurkishTalk.Persistance.ModelConfigurations
         {
             builder.HasKey(x => x.Id);
             builder.HasMany(x => x.ProgresRead).WithOne(x=>x.ReadTask);
+            builder.Property(x=>x.TextReadingExample).HasBase64Conversion();
+            builder.Property(x => x.Tests).HasJsonBase64Conversion();
         }
     }
 }

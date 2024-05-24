@@ -56,6 +56,7 @@ namespace Turkish_Talk.Services
             view.ScoreAlphabet = await CountCorrectAnswerAlfabetAsync(user.ProgressAlfabet);
             view.ScoreRead = await CountCorrectAnswerReadAsync(user.ProgresRead);
             view.TotalScore = TotalCountCorrectAnswer(view.ScoreGrammar, view.ScoreWrite, view.ScoreAlphabet,view.ScoreRead);
+            view.Id = user.Id;
 
             return view;
         }

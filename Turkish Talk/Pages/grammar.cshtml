@@ -81,11 +81,11 @@
         <div class="test_block">
             <form method="post" asp-page-handler="testsSubmitted">
                 <div class="test">
-                    <h2>Выполни тест № @Model.ActiveTask.Id</h2>
+                    <h2>Выполни тест</h2>
                     <div class="question">
                         <ol>
                             @foreach (var item in Model.Tests)
-                            {
+                            {   
                                 <li>@item.Question</li>
                                 <input type="text" class="text_field" name="@item.Id" id="@item.Id"/>
                             }
@@ -98,7 +98,7 @@
             </form>
             <form method="post" asp-page-handler="radioTestsSubmitted">
             <div class="test">
-              <h2>Выполни тест № @Model.ActiveTask.Id</h2>
+              <h2>Выбери правильный ответ</h2>
                 <div class="question">
                     <ol>
 

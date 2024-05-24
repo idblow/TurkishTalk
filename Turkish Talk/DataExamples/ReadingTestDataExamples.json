@@ -1,0 +1,79 @@
+﻿//1тест
+[
+  {
+    "id": 1,
+    "question": "Ece sabah saat kaçta uyanır?",
+    "answers": [],
+    "questionAnswer": "Yedide"
+  },
+  {
+    "id": 2,
+    "question": "Ece'nin kardeşi ne yapmayı sever?",
+    "answers": [],
+    "questionAnswer": "Resim"
+  },
+  {
+    "id": 3,
+    "question": "Ece'nin annesi ne iş yapar?",
+    "answers": [],
+    "questionAnswer": "Müzisyen"
+  },
+  {
+    "id": 4,
+    "question": "Ece'nin babası işe nasıl gider?",
+    "answers": [],
+    "questionAnswer": "Motosikletle"
+  },
+  {
+    "id": 5,
+    "question": "Ece'nin evcil hayvanı nedir?",
+    "answers": [],
+    "questionAnswer": "Köpek"
+  },
+  {
+    "id": 6,
+    "question": "Ece ve ailesi yazın nereye giderler?",
+    "answers": [],
+    "questionAnswer": "Plaja"
+  }
+]
+//2 тест
+
+[
+  {
+    "id": 1,
+    "question": "Odamı kiminle paylaşırım",
+    "answers": [],
+    "questionAnswer": "Kardeşimle"
+  },
+  {
+    "id": 2,
+    "question": "Odamın duvarları hangi renktir?",
+    "answers": [],
+    "questionAnswer": "Mavi"
+  },
+  {
+    "id": 3,
+    "question": "Sabahları ilk olarak ne yaparım?",
+    "answers": [],
+    "questionAnswer": "Pencereyi açarım"
+  },
+  {
+    "id": 4,
+    "question": "Bilgisayarım nerededir?",
+    "answers": [],
+    "questionAnswer": "Çalışma masamın üstünde"
+  },
+  {
+    "id": 5,
+    "question": "Kardeşimin yatağının altında ne vardır?",
+    "answers": [],
+    "questionAnswer": "Basketbol topu"
+  },
+  {
+    "id": 6,
+    "question": "En sevdiğim bilgisayar oyunu …",
+    "answers": [],
+    "questionAnswer": "Araba yarışıdır"
+  }
+]
