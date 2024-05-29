@@ -36,6 +36,9 @@ namespace Turkish_Talk.Pages
                 ActiveTask = activeTaskQuery.Include(p => p.ProgresGrammars
                     .Where(a => a.User.Id == userId)).FirstOrDefault();
 
+                var activeTaskName = ActiveTask?.Name ?? string.Empty;
+
+                TaskTopics = _applicationDB.Set<GrammarTask>().Where(x => x.Name != activeTaskName).Select(x => x.Name).ToList();
 
                 _progressCurrentTask = ActiveTask.ProgresGrammars.FirstOrDefault();
                 _userService.StoreValueInSession("ActiveGrammarTaskId", ActiveTask.Id.ToString());

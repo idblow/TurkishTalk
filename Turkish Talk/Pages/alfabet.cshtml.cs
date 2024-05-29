@@ -34,8 +34,12 @@ namespace Turkish_Talk.Pages
                ActiveTask = activeTaskQuery.Include(x => x.WordDictionary)
                    .Include(x=>x.ProgressAlfabet.Where(y=>y.User.Id==userId))
                    .First();
-                
-               _userService.StoreValueInSession("ActiveAlphabetTask", ActiveTask.Id.ToString());
+
+                var activeTaskName = ActiveTask?.Name ?? string.Empty;
+
+                TaskTopics = _applicationDB.Set<AlfabetTask>().Where(x => x.Name != activeTaskName).Select(x => x.Name).ToList();
+
+                _userService.StoreValueInSession("ActiveAlphabetTask", ActiveTask.Id.ToString());
                
                 _progressCurrentTask = ActiveTask.ProgressAlfabet.FirstOrDefault();
                 var words = ActiveTask.WordDictionary;

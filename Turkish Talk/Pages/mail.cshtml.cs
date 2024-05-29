@@ -39,6 +39,13 @@ namespace Turkish_Talk.Pages
                 ActiveTask = activeTaskQuery.Include(p => p.ProgresWrite
                     .Where(a => a.User.Id == userId)).FirstOrDefault();
 
+                var activeTaskName = ActiveTask?.Name ?? string.Empty;
+
+                TaskTopics = _applicationDB.Set<WriteTask>().Where(x => x.Name != activeTaskName).Select(x => x.Name).ToList();
+
+                Tests = ActiveTask.Tests;
+                TestNames = Tests.Select(x => x.Question).ToList();
+
                 _progressCurrentTask = ActiveTask.ProgresWrite.FirstOrDefault();
                 Rule = ActiveTask.Rule;
                 FixString = ActiveTask.FixString;
@@ -50,7 +57,9 @@ namespace Turkish_Talk.Pages
 
         public List<string> TaskTopics { get; set; } = new List<string>();
         public string Rule { get; set; }
-
+        public List<TestData> Tests { get; set; }
+        public TestData ActiveTest { get; set; }
+        public List<string> TestNames { get; set; }
         public string FixString { get; set; }
 
         public WriteTask ActiveTask { get; set; }

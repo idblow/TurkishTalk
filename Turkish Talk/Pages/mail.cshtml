@@ -63,16 +63,17 @@
 </div>
 <div class="main_block">
     <div class="container">
-        <form method="post" asp-page-handler="taskSelected">
-            <label class="topic" for="rating">Тема урока: </label>
-            <select class="custom_select" id="taskName" name="taskName" onchange="this.form.submit();">
-                <option value="" selected="selected">Не выбрано</option>
-                @foreach (var item in Model.TaskTopics)
-                {
-                    <option value="@item">@item</option>
-                }
-            </select>
-        </form>
+            <form method="post" asp-page-handler="taskSelected">
+                <select class="custom_select" id="taskName" name="taskName" onchange="this.form.submit();">
+
+                    <option value="" selected="selected">@Model.ActiveTask.Name</option>
+                    @foreach (var item in Model.TaskTopics)
+                    {
+                        <option value="@item">@item</option>
+                    }
+
+                </select>
+            </form>
         <div class="mail">
             <h2>Правила:</h2>
             <p>
@@ -94,18 +95,19 @@
             <p style="font-size: 25px;
         font-weight: 600; margin-top: 40px; margin-bottom: 40px;">Воспользуетесь <a target="_blank" href="https://rus-tr-dict.slovaronline.com/">словарем</a> и выберите правильные значения слов</p>
             <div class="test">
-                <div class="question">
-                    <ol>
-
-                    </ol>
-                </div>
-                <select class="custom_select" id="rating" name="rating">
-                    <option value="" selected="selected">Не выбрано</option>
-                    @foreach (var item in Model.TaskTopics)
+                    @foreach (var element in Model.Tests)
                     {
-                        <option value="">@item</option>
+                        <div class="question">
+                            <span>@element.Question</span>
+                            <select class="custom_select" id="rating" name="rating">
+                                @foreach (var item in element.Answers)
+                                {
+                                    <option value="">@item</option>
+                                }
+                             </select >
+                        </div>
                     }
-                </select>
+
                 <button class="btn_answer">
                     <p>Ответить</p>
                 </button>

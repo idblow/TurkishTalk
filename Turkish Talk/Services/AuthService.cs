@@ -15,7 +15,6 @@ namespace Turkish_Talk.Services
         public AuthService(ApplicationDBContext applicationDB, IHttpContextAccessor httpContext)
         {
             _applicationDB = applicationDB;
-
             _httpContext = httpContext.HttpContext!;
         }
 
