@@ -15,6 +15,8 @@ namespace TurkishTalk.Persistance.ModelConfigurations
             builder.HasMany(x => x.WordDictionary).WithOne(x=>x.WriteTask);
             builder.Property(x => x.Rule).HasBase64Conversion();
             builder.Property(x => x.Tests).HasJsonBase64Conversion();
+            builder.Property(x=>x.FixString).HasBase64Conversion();
+            builder.Property(x=>x.FixStringCorrect).HasBase64Conversion();
         }
     }
 }

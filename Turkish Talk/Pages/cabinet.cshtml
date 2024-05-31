@@ -21,6 +21,10 @@
                         <li><a href="/index#advantages">Преимущества</a></li>
                         <li><a href="/index">О тренажере</a></li>
                         <li><a href="/index#feedback">Напишите нам</a></li>
+                        @if(Model.PersonalCabinetViewModel.IsAdmin)
+                        {
+                            <li><a href="/admin">Управление сайтом</a></li>
+                        }
                         <li><a href="/login">Выйти</a></li>
                     </ul>
                 </nav>

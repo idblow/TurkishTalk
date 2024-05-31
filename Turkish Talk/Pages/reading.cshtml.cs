@@ -43,7 +43,7 @@ namespace Turkish_Talk.Pages
                 _progressCurrentTask = ActiveTask?.ProgresRead.FirstOrDefault();
                 Tests = ActiveTask?.Tests ?? new List<TestData>();
                 TextReadingExample = ActiveTask?.TextReadingExample;
-                QuestionText = ActiveTask?.QuestionText;
+                
 
                 _userService.StoreValueInSession("ActiveReadingTaskId", ActiveTask?.Id.ToString());
             }
@@ -51,7 +51,7 @@ namespace Turkish_Talk.Pages
 
         public List<string> TaskTopics { get; set; } = new List<string>();
         public string TextReadingExample { get; set; }
-        public string QuestionText { get; set; }
+        
         public List<TestData> Tests { get; set; } = new List<TestData>();
 
 
@@ -72,7 +72,6 @@ namespace Turkish_Talk.Pages
             _progressCurrentTask = ActiveTask.ProgresRead.FirstOrDefault();
             Tests = ActiveTask.Tests;
             TextReadingExample = ActiveTask.TextReadingExample;
-            QuestionText = ActiveTask.QuestionText;
 
             _userService.StoreValueInSession("ActiveReadingTaskId", ActiveTask.Id.ToString());
         }

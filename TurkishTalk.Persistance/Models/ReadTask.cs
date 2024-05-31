@@ -6,8 +6,6 @@ namespace TurkishTalk.Persistance.Models
         public int Id { get; set; }
         public int Level { get; set; }
         public required string TextReadingExample { get; set; }
-        public required string TextReadingVoiceExample { get; set; }
-        public required string QuestionText { get; set;}
         public required string Name { get; set; }
         public required Section Section { get; set; }
         public List<ProgresRead> ProgresRead { get; set; }

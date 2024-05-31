@@ -49,8 +49,8 @@ namespace Turkish_Talk.Pages
                 _progressCurrentTask = ActiveTask.ProgresWrite.FirstOrDefault();
                 Rule = ActiveTask.Rule;
                 FixString = ActiveTask.FixString;
-                
-                
+
+
                 _userService.StoreValueInSession("ActiveMailTaskId", ActiveTask.Id.ToString());
             }
         }
@@ -70,43 +70,62 @@ namespace Turkish_Talk.Pages
                 return;
 
             var userId = _authService.GetUserId();
-            
-            if(!userId.HasValue)
+
+            if (!userId.HasValue)
                 return;
 
             ActiveTask = await _applicationDB.Set<WriteTask>().Include(p => p.ProgresWrite
-                .Where(a => a.User.Id == userId)) .FirstAsync(p => p.Name == taskName);
-                
+                .Where(a => a.User.Id == userId)).FirstAsync(p => p.Name == taskName);
+
             _progressCurrentTask = ActiveTask.ProgresWrite.FirstOrDefault();
             Rule = ActiveTask.Rule;
             FixString = ActiveTask.FixString;
-            
+
             _userService.StoreValueInSession("ActiveMailTaskId", ActiveTask.Id.ToString());
         }
 
+
         public async Task OnPostTestsSubmitted(IFormCollection data)
         {
-            foreach (var testResult in data)
+            var inputString = data["fixstring"].First();
+            var inputCorrect = ActiveTask.FixStringCorrect.Equals(inputString, StringComparison.InvariantCultureIgnoreCase);
+
+            var testAnswers = data["rating"];
+
+            var correctTest = 0;
+
+            for (int i = 0; i < testAnswers.Count; i++)
             {
-                if (!int.TryParse(testResult.Key, out var testId))
+                var testAnswerCorrect = ActiveTask.Tests[i].QuestionAnswer == testAnswers[i];
+
+                if(testAnswerCorrect)
                 {
-                    continue;
+                    correctTest++;
                 }
-                
-                var testAnswer = testResult.Value;
             }
+
+            var testProgress = (correctTest * 100) / testAnswers.Count() / 2;
+
+            if(inputCorrect)
+            {
+                testProgress += 50;
+            }
+
+            var userid = _authService.GetUserId();
+            var user = _applicationDB.Set<User>().First(x => x.Id == userid);
+            if (_progressCurrentTask == null)
+            {
+                _progressCurrentTask = new ProgresWrite() { User = user, WriteTask = ActiveTask, Score = testProgress };
+                _applicationDB.Add(_progressCurrentTask);
+            }
+            else
+            {
+                _progressCurrentTask.Score = testProgress;
+                _applicationDB.Update(_progressCurrentTask);
+            }
+            _applicationDB.SaveChanges();
         }
 
-        public async Task OnPostRadioTestsSubmittedAsync(IFormCollection data)
-        {
-            foreach (var testResult in data)
-            {
-                if (!int.TryParse(testResult.Key, out var testId))
-                {
-                    continue;
-                }
-                var testAnswer = testResult.Value;
-            }
-        }
+       
     }
 }

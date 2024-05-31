@@ -1,4 +1,5 @@
-[ //Алфавит тема №1
+//Алфавит тема №1
+[
   {
     "id": 1,
     "question": "мама, папа",
@@ -58,7 +59,7 @@
     "question": "Büyük anne çay içiyor",
     "answers": [],
     "questionAnswer": "Бабушка пьет чай"
-  }
+  },
 
 
 

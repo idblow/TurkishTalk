@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TurkishTalk.Persistance;
 
@@ -11,9 +12,11 @@ using TurkishTalk.Persistance;
 namespace TurkishTalk.Persistance.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240529192306_WriteTask")]
+    partial class WriteTask
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -217,6 +220,10 @@ namespace TurkishTalk.Persistance.Migrations
                     b.Property<string>("TextReadingExample")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<string>("TextReadingVoiceExample")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("VoiceExample")
                         .IsRequired()
