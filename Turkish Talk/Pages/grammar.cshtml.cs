@@ -12,6 +12,7 @@ namespace Turkish_Talk.Pages
         private readonly AuthService _authService;
         private readonly UserService _userService;
         private ProgresGrammar? _progressCurrentTask;
+        public int ProgresSection = 0;
         public int ProgressCurrentTask => _progressCurrentTask?.scope ?? 0;
 
         public grammarModel(ApplicationDBContext applicationDB, AuthService authService, UserService userService)
@@ -42,7 +43,7 @@ namespace Turkish_Talk.Pages
 
                 _progressCurrentTask = ActiveTask.ProgresGrammars.FirstOrDefault();
                 _userService.StoreValueInSession("ActiveGrammarTaskId", ActiveTask.Id.ToString());
-
+                ProgresSection = userService.GetCabinetViewModel().Result.ScoreRead;
                 Tests = ActiveTask.Tests;
                 RadioTests = ActiveTask.RadioTests;
                 Rule = ActiveTask.Rule;

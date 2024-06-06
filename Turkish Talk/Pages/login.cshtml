@@ -28,22 +28,21 @@
         <div class="form-container sign-up-container">
             <form method="post" asp-page-handler="registration">
                 <h1>Регистрация</h1>
-                <input name="fullname" type="text" placeholder="Имя" />
-                <input name ="login" type="email" placeholder="Email" />
-                <input name="password" type="password" placeholder="Пароль" />
-                <input name="doublepassword" type="password" placeholder="Подтверждение пароля" />
-                <button id="image" style="display:block;width:120px; height:30px;" onclick="document.getElementById('getFile').click()">Загрузить аватар</button>
+                <input required name="fullname" type="text" placeholder="Имя" />
+                <input required name="login" type="email" placeholder="Email" />
+                <input required name="password" type="password" placeholder="Пароль" />
+                <input required name="doublepassword" type="password" placeholder="Подтверждение пароля" />
+                <button id="image" onclick="document.getElementById('getFile').click()">Загрузить аватар</button>
                 <input name="picture" type="file" id="getFile" style="display:none">
-                <input type="submit" id="submit" style="display:none" onclick="document.getElementById('getFile').click()"/>
+                <input type="submit" id="submit" style="display:none"/>
                 <button onclick="document.getElementById('submit').click()">Зарегистрироваться</button>
             </form>
         </div>
         <div class="form-container sign-in-container">
             <form method="post" asp-page-handler="login">
                 <h1>Вход</h1>
-                <input name="login" type="email" placeholder="Email" />
-                <input name="password" type="password" placeholder="Пароль" />
-                <a href="#">Забыли пароль?</a>
+                <input required name="login" type="email" placeholder="Email" />
+                <input required name="password" type="password" placeholder="Пароль" />
                 <button>Войти</button>
             </form>
         </div>
@@ -90,4 +89,6 @@
         </div>
     </footer>
     <script src="~/js/login.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 </body>

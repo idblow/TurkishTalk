@@ -9,10 +9,11 @@ body {
 .container {
     width: 1344px;
     margin: auto;
-} 
-header {
+}
+.header_line {
     width: 100%;
-    background-color: #fff;
+    background-color: #3B2E51;
+    color:#fff;
 }
 .navbar {
     display: flex;
@@ -33,7 +34,7 @@ nav ul li a {
 .navbar a {
     font-size: 23px;
     font-weight: 400;
-    color: #000;
+    color: #fff;
 }
 
 .user {

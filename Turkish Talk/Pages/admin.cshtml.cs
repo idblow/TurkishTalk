@@ -90,8 +90,6 @@ namespace Turkish_Talk.Pages
 
         public async Task OnPostReadTaskAddAsync(string topic, string complex, string course, IFormFile voiceexample, string text, string testjson)
         {
-
-
             var level = int.Parse(complex);
             var courseParsed = int.Parse(course);
             var test = JsonConvert.DeserializeObject<List<TestData>>(testjson);

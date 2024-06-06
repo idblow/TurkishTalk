@@ -1,3 +1,29 @@
+//алфавит тестовое
+[
+  {
+    "id": 1,
+    "question": "вопрос",
+    "answers": [],
+    "questionAnswer": "1"
+  },
+  {
+    "id": 2,
+    "question": "вопрос",
+    "answers": [],
+    "questionAnswer": "1"
+  },
+  {
+    "id": 3,
+    "question": "вопрос",
+    "answers": [],
+    "questionAnswer": "1"
+  }
+]
+
+
+
+
+
 //Алфавит тема №1
 [
   {
@@ -126,7 +152,3 @@
       "questionAnswer": "Партнера по бизнесу зовут Селит"
     }
   ]
-
-
-
-

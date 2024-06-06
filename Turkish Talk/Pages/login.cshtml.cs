@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Turkish_Talk.Models;
 using Turkish_Talk.Services;
 using TurkishTalk.Persistance;
 
@@ -7,11 +8,14 @@ namespace Turkish_Talk.Pages
 {
     public class LoginModel : PageModel
     {
-        private readonly AuthService _authService;
+        public PersonalCabinetViewModel _PersonalCabinetViewModel { get; }
 
-        public LoginModel(AuthService authService)
+        private readonly AuthService _authService;
+       
+        public LoginModel(AuthService authService, UserService userService)
         {
-           _authService = authService;
+            _PersonalCabinetViewModel = userService.GetCabinetViewModel().Result;
+            _authService = authService;
         }
 
         public async Task<IActionResult> OnPostLoginAsync(string login, string password)

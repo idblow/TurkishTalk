@@ -139,7 +139,7 @@ h2 {
 .learn {
     border: 2px solid #611FCB;
     border-radius: 20px;
-    width: 45%;
+    width: 100%;
     text-align: left;
     padding: 30px;
     display: flex;
@@ -151,9 +151,6 @@ h2 {
         font-size: 20px;
     }
 
-.test {
-    width: 45%;
-}
 
     .test h2 {
         color: #611FCB;
@@ -166,7 +163,6 @@ h2 {
 
 .question ol {
     margin-top: 0px;
-    padding-left: 0px;
 }
 
 .text_field {
@@ -277,3 +273,7 @@ h2 {
     .result span {
         color: #611FCB;
     }
+audio {
+    position: relative;
+    z-index: -1
+}

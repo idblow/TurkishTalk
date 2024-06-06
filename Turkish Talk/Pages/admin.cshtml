@@ -6,17 +6,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet">
     <link rel="stylesheet" href="~/css/admin.css">
-    <link rel="shortcut icon" href="/img/logo_title.svg" type="image/png">
+    <link rel="shortcut icon" href="/img/logo.svg" type="image/png">
 </head>
 <body>
-    <header id="header">
+    <header id="header" class="header_line">
         <div class="container">
             <nav class="header-line">
                 <ul class="navbar">
-                    <li><a href="/"><img src="/img/main_back.svg"></a></li>
+                    <li><a href="/"><img src="/img/logo.svg"></a></li>
                     <li><a href="/login">Выйти</a></li>
                 </ul>
             </nav>
@@ -31,7 +30,7 @@
                     <form method="post">
                         <input type="hidden" name="userid" value="@user.Id"/>
                         <p>@user.FullName</p>
-                        <p>Прогресс: @user.TotalProgress%</p>
+                        <p>Прогресс: @user.TotalProgress %</p>
                         <input class="buttonSend" asp-page-handler="UserRemove" type="submit" value="Удалить пользователя" />
                     </form>
                 </div>
@@ -58,7 +57,7 @@
                 </div>
                 <div class="modal-body">
                     <form class="modal_form" id="special_form" method="post">
-                        <input name="topic" class="text_field" type="text" placeholder="Тема урока">
+                        <input required name="topic" class="text_field" type="text" placeholder="Тема урока">
                         <label for="complex">Сложность: </label>
                         <select name="complex" class="topic" id="complex">
                             <option value="1">1</option>
@@ -75,7 +74,7 @@
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
-                        <input name="testjson" class="text_field" type="text" placeholder="Тест">
+                        <input required name="testjson" class="text_field" type="text" placeholder="Тест">
                         <input class="buttonSend" asp-page-handler="AlphabetTaskAdd" type="submit" value="Добавить урок">
                         <input class="buttonSend" asp-page-handler="AlphabetTaskRemove" type="submit" value="Удалить урок">
                     </form>
@@ -94,7 +93,7 @@
                 </div>
                 <div class="modal-body">
                     <form enctype="multipart/form-data" method="post" class="modal_form" id="special_form">
-                        <input name="topic" class="text_field" type="text" placeholder="Тема урока">
+                        <input required name="topic" class="text_field" type="text" placeholder="Тема урока">
                         <label for="complex">Сложность: </label>
                         <select name="complex" class="topic" id="complex">
                             <option value="1">1</option>
@@ -113,8 +112,8 @@
                         </select>
                         <label for="voiceexample">Пример чтения текста</label>
                         <input name="voiceexample" type="file" placeholder="Пример чтения текста">
-                        <input name="text" class="text_field" type="text" placeholder="Текст для чтения">
-                        <input name="testjson" class="text_field" type="text" placeholder="Теcт в формате json">
+                        <input required name="text" class="text_field" type="text" placeholder="Текст для чтения">
+                        <input required name="testjson" class="text_field" type="text" placeholder="Теcт в формате json">
                         <input class="buttonSend" asp-page-handler="ReadTaskAdd" type="submit" value="Добавить урок">
                         <input class="buttonSend" asp-page-handler="ReadTaskRemove" type="submit" value="Удалить урок">
                     </form>
@@ -132,7 +131,7 @@
                 </div>
                 <div class="modal-body">
                     <form method="post" class="modal_form" id="special_form">
-                        <input name="topic" class=" text_field" type="text" placeholder="Тема урока">
+                        <input required name="topic" class=" text_field" type="text" placeholder="Тема урока">
                         <label for="complex">Сложность: </label>
                         <select name="complex" class="topic" id="complex">
                             <option value="1">1</option>
@@ -149,9 +148,9 @@
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
-                        <input name="rule" class="text_field" type="text" placeholder="Правила">
-                        <input name="radiotestjson" class="text_field" type="text" placeholder="Радиотест">
-                        <input name="testjson" class="text_field" type="text" placeholder="Теcт">
+                        <input required name="rule" class="text_field" type="text" placeholder="Правила">
+                        <input required name="radiotestjson" class="text_field" type="text" placeholder="Радиотест">
+                        <input required name="testjson" class="text_field" type="text" placeholder="Теcт">
                         <input class="buttonSend" asp-page-handler="GrammarTaskAdd" type="submit" value="Добавить урок">
                         <input class="buttonSend" asp-page-handler="GrammarTaskRemove" type="submit" value="Удалить урок">
                     </form>
@@ -169,7 +168,7 @@
                 </div>
                 <div class="modal-body">
                     <form method="post" class="modal_form" id="special_form">
-                        <input name="topic" class="text_field" type="text" placeholder="Тема урока">
+                        <input required name="topic" class="text_field" type="text" placeholder="Тема урока">
                         <label for="complex">Сложность: </label>
                         <select name="complex" class="topic" id="complex">
                             <option value="1">1</option>
@@ -186,10 +185,10 @@
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
-                        <input name="rule" class="text_field" type="text" placeholder="Правила">
-                        <input name="fixstring" class="text_field" type="text" placeholder="Фиксированная строка">
-                        <input name="fixstringcorrect" class="text_field" type="text" placeholder="Правильный ответ">
-                        <input name="testjson" class="text_field" type="text" placeholder="Тест с выбором ответа">
+                        <input required name="rule" class="text_field" type="text" placeholder="Правила">
+                        <input required name="fixstring" class="text_field" type="text" placeholder="Фиксированная строка">
+                        <input required name="fixstringcorrect" class="text_field" type="text" placeholder="Правильный ответ">
+                        <input required name="testjson" class="text_field" type="text" placeholder="Тест с выбором ответа">
                         <input class="buttonSend" asp-page-handler="WriteTaskAdd" type="submit" value="Добавить урок">
                         <input class="buttonSend" asp-page-handler="WriteTaskRemove" type="submit" value="Удалить урок">
                     </form>
@@ -207,8 +206,8 @@
                 </div>
                 <div class="modal-body">
                     <form method="post" class="modal_form" id="special_form">
-                        <input name="word" class="text_field" type="text" placeholder="Слово">
-                        <input name="translation" class="text_field" type="text" placeholder="Перевод слова">
+                        <input required name="word" class="text_field" type="text" placeholder="Слово">
+                        <input required name="translation" class="text_field" type="text" placeholder="Перевод слова">
                         <label for="complex">Раздел письма: </label>
                         <select name="topicwritting" class="topic" id="complex">
                             <option value="1">1</option>
@@ -225,8 +224,8 @@
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
-                        <input class="buttonSend" asp-page-handler="DictionaryAdd" type="submit" value="Добавить урок">
-                        <input class="buttonSend" asp-page-handler="DictionaryTaskRemove" type="submit" value="Удалить урок">
+                        <input class="buttonSend" asp-page-handler="DictionaryAdd" type="submit" value="Добавить слово">
+                        <input class="buttonSend" asp-page-handler="DictionaryTaskRemove" type="submit" value="Удалить слово">
                     </form>
                 </div>
             </div>

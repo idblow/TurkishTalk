@@ -84,10 +84,11 @@
             <h2>Пример чтения текста</h2>
             <p>
                 @Model.TextReadingExample
-                <audio controls>
+                    <audio controls>
                         <source src="api/storage/GetReadingTaskVoiceExample/@Model.ActiveTask.Id" />
-                </audio>
+                    </audio>
             </p>
+                
         </div>
         <p style="font-size: 25px;
         font-weight: 600; margin-top: 40px; margin-bottom: 40px;">Прочитайте текста на турецком языке. С помощью словаря переведите текст и ответьте на вопросы.</p>
@@ -101,7 +102,7 @@
                                         @foreach (var item in Model.Tests)
                                         {
                                             <li>@item.Question</li>
-                                            <input type="text" class="text_field" name="@item.Id" id="@item.Id" />
+                                            <input required type="text" class="text_field" name="@item.Id" id="@item.Id" />
                                         }
                                     </ol>
                                 </div>
@@ -116,7 +117,7 @@
         </div>
         <div class="result">
             <p>Результаты теста: <span>@Model.ProgressCurrentTask%</span></p>
-            <p style="padding-left: 40px;">Результаты по разделу: <span>0%</span></p>
+                <p style="padding-left: 40px;">Результаты по разделу: <span>@Model.ProgresSection%</span></p>
         </div>
         <p style="font-size: 25px;
         font-weight: 600; margin-top: 0px;">Чтобы получить зачет по данному разделу нужно пройти минимум 4 теста</p>

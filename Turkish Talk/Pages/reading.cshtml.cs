@@ -12,6 +12,7 @@ namespace Turkish_Talk.Pages
         private readonly AuthService _authService;
         private readonly UserService _userService;
         private ProgresRead? _progressCurrentTask;
+        public int ProgresSection=0;
         public int ProgressCurrentTask => _progressCurrentTask?.scope ?? 0;
 
         public readingModel(ApplicationDBContext applicationDB, AuthService authService, UserService userService)
@@ -43,7 +44,7 @@ namespace Turkish_Talk.Pages
                 _progressCurrentTask = ActiveTask?.ProgresRead.FirstOrDefault();
                 Tests = ActiveTask?.Tests ?? new List<TestData>();
                 TextReadingExample = ActiveTask?.TextReadingExample;
-                
+                ProgresSection = userService.GetCabinetViewModel().Result.ScoreRead;
 
                 _userService.StoreValueInSession("ActiveReadingTaskId", ActiveTask?.Id.ToString());
             }

@@ -1,4 +1,60 @@
-﻿[
+﻿//грамматика радиотест тестовое
+[
+  {
+    "id": 1,
+    "question": "вопрос",
+    "answers": [
+      "ответ",
+      "ответ",
+      "1"
+    ],
+    "questionAnswer": "1"
+  },
+  {
+    "id": 2,
+    "question": "вопрос",
+    "answers": [
+      "ответ",
+      "ответ",
+      "1"
+    ],
+    "questionAnswer": "1"
+  },
+  {
+    "id": 3,
+    "question": "вопрос",
+    "answers": [
+      "ответ",
+      "ответ",
+      "1"
+    ],
+    "questionAnswer": "1"
+  }
+]
+//грамматика тест тестовое
+[
+  {
+    "id": 1,
+    "question": "вопрос",
+    "answers": [],
+    "questionAnswer": "1"
+  },
+  {
+    "id": 2,
+    "question": "вопрос",
+    "answers": [],
+    "questionAnswer": "1"
+  },
+  {
+    "id": 3,
+    "question": "вопрос",
+    "answers": [],
+    "questionAnswer": "1"
+  }
+]
+
+
+[
   //Грамматика радиотест тема№1
   {
     "id": 1,
@@ -95,28 +151,28 @@
 
     //Грамматика тест тема№2
     [
-    {
-      "id": 1,
-      "question": "Это машина(близко)",
-      "answers": [],
-      "questionAnswer": "Bu araba"
-    },
-    {
-      "id": 2,
-      "question": "Это сумка(немного дальше)",
-      "answers": [],
-      "questionAnswer": "Şu çanta"
-    },
-    {
-      "id": 3,
-      "question": "Это окно(далеко)",
-      "answers": [],
-      "questionAnswer": "О pencere"
-    },
-    {
-      "id": 1,
-      "question": "Это мама(близко)",
-      "answers": [],
-      "questionAnswer": "Bu anne"
-    }
-  ]
+      {
+        "id": 1,
+        "question": "Это машина(близко)",
+        "answers": [],
+        "questionAnswer": "Bu araba"
+      },
+      {
+        "id": 2,
+        "question": "Это сумка(немного дальше)",
+        "answers": [],
+        "questionAnswer": "Şu çanta"
+      },
+      {
+        "id": 3,
+        "question": "Это окно(далеко)",
+        "answers": [],
+        "questionAnswer": "О pencere"
+      },
+      {
+        "id": 1,
+        "question": "Это мама(близко)",
+        "answers": [],
+        "questionAnswer": "Bu anne"
+      }
+    ]

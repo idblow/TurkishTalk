@@ -35,10 +35,23 @@
         <div class="personal_info">
             <div class="persona">
                 <div class="ava"><img src="api/storage/getuserimage/@Model.PersonalCabinetViewModel.Id" /></div>
+                
                 <div class="info">
                     <h1>@Model.PersonalCabinetViewModel.FullName</h1>
                     <p>Общий результат по курсам: @Model.PersonalCabinetViewModel.TotalScore%</p>
                 </div>
+            </div>
+            <div class="form_edit">
+                <form method="post" asp-page-handler="UserNameUpdate" style="margin:20px 20px;">
+                    <input required type="text" class="text_field" name="name" />
+                    <button class="btn_answer" onclick="this.form.submit();">
+                        <p>изменить имя</p>
+                    </button>
+                </form>
+                <form method="post" asp-page-handler="ImageUpdate" enctype="multipart/form-data">
+                    <input required type="file" name="image" />
+                    <input class="btn_answer" type="submit" placeholder="изменить фото" />
+                </form>
             </div>
             <div class="sections">
                 <div class="section">

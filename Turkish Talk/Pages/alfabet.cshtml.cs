@@ -11,6 +11,7 @@ namespace Turkish_Talk.Pages
         private readonly ApplicationDBContext _applicationDB;
         private readonly AuthService _authService;
         private readonly UserService _userService;
+        public int ProgresSection = 0;
 
         public alfabetModel(ApplicationDBContext applicationDB, AuthService authService, UserService userService)
         {
@@ -82,7 +83,7 @@ namespace Turkish_Talk.Pages
             WordsColumn3 = words.Skip(columnLenght * 2).ToList();
             Tests = ActiveTask.Tests;
             _progressCurrentTask = ActiveTask.ProgressAlfabet.FirstOrDefault();
-
+            ProgresSection = _userService.GetCabinetViewModel().Result.ScoreAlphabet;
 
             _userService.StoreValueInSession("ActiveAlphabetTask", ActiveTask.Id.ToString());
         }

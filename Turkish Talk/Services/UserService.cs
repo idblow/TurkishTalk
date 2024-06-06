@@ -8,6 +8,10 @@ namespace Turkish_Talk.Services
     public class UserService
     {
         private ApplicationDBContext _applicationDBContext;
+        private int _countgrammar;
+        private int _countalphabettask;
+        private int _countwritetask;
+        private int _countreadtask;
         private readonly HttpContext _httpContext;
 
         public UserService(ApplicationDBContext applicationDBContext, IHttpContextAccessor httpContext)
@@ -27,7 +31,7 @@ namespace Turkish_Talk.Services
             return _httpContext.Session.GetString(key);
         }
 
-        private int? GetUserIdFromSession()
+        public int? GetUserIdFromSession()
         {
             return _httpContext.Session.GetInt32("userid");
         }
@@ -37,7 +41,7 @@ namespace Turkish_Talk.Services
         {
             var userid = GetUserIdFromSession();
 
-            if(userid == null)
+            if (userid == null)
             {
                 return null;
             }
@@ -55,7 +59,7 @@ namespace Turkish_Talk.Services
             view.ScoreWrite = await CountCorrectAnswerWriteAsync(user.ProgresWrite);
             view.ScoreAlphabet = await CountCorrectAnswerAlfabetAsync(user.ProgressAlfabet);
             view.ScoreRead = await CountCorrectAnswerReadAsync(user.ProgresRead);
-            view.TotalScore = TotalCountCorrectAnswer(view.ScoreGrammar, view.ScoreWrite, view.ScoreAlphabet,view.ScoreRead);
+            view.TotalScore = TotalCountCorrectAnswer(user);
             view.Id = user.Id;
             view.IsAdmin = user.Role == UserRole.Admin;
 
@@ -64,69 +68,56 @@ namespace Turkish_Talk.Services
 
         public async Task<int> CountCorrectAnswerReadAsync(List<ProgresRead> progres)
         {
-            var countreadtask = await _applicationDBContext.Set<ReadTask>().CountAsync();
-            var fullprogress = countreadtask * 100;
-
-            if (fullprogress == 0)
-            {
-                fullprogress = 1;
-            }
+            _countreadtask = await _applicationDBContext.Set<ReadTask>().CountAsync();
+            var fullprogress = _countreadtask;
 
             var realprogress = progres.Select(x => x.scope).Sum();
-            var totalprogress = (realprogress * 100) / fullprogress;
+            var totalprogress = (realprogress * fullprogress) / 100;
             return totalprogress;
 
         }
 
         public async Task<int> CountCorrectAnswerWriteAsync(List<ProgresWrite> progresWrite)
         {
-            var countwritetask = await _applicationDBContext.Set<WriteTask>().CountAsync();
-            var fullprogress = countwritetask * 100;
-
-            if (fullprogress == 0)
-            {
-                fullprogress = 1;
-            }
+            _countwritetask = await _applicationDBContext.Set<WriteTask>().CountAsync();
+            var fullprogress = _countwritetask;
 
             var realprogress = progresWrite.Select(x => x.Score).Sum();
-            var totalprogress = (realprogress * 100) / fullprogress;
+            var totalprogress = (realprogress * fullprogress) / 100;
             return totalprogress;
         }
 
         public async Task<int> CountCorrectAnswerAlfabetAsync(List<ProgressAlfabet> progres)
         {
-            var countalphabettask = await _applicationDBContext.Set<AlfabetTask>().CountAsync();
-            var fullprogress = countalphabettask * 100;
-
-            if (fullprogress == 0)
-            {
-                fullprogress = 1;
-            }
+            _countalphabettask = await _applicationDBContext.Set<AlfabetTask>().CountAsync();
+            var fullprogress = _countalphabettask;
 
             var realprogress = progres.Select(x => x.scope).Sum();
-            var totalprogress = (realprogress * 100) / fullprogress;
+            var totalprogress = (realprogress * fullprogress) / 100;
             return totalprogress;
         }
 
         public async Task<int> CountCorrectAnswerGrammarAsync(List<ProgresGrammar> progresGrammars)
         {
-            var countgrammar = await _applicationDBContext.Set<GrammarTask>().CountAsync();
-            
-            var fullprogress = countgrammar * 100;
+            _countgrammar = await _applicationDBContext.Set<GrammarTask>().CountAsync();
 
-            if(fullprogress == 0)
-            {
-                fullprogress = 1;
-            }
+            var fullprogress = _countgrammar;
 
             var realprogress = progresGrammars.Select(x => x.scope).Sum();
-            var totalprogress = (realprogress * 100)/fullprogress;
+            var totalprogress = (realprogress * fullprogress) / 100;
             return totalprogress;
         }
 
-        public int TotalCountCorrectAnswer (int progressread, int progresswrite, int progressalfabet, int progressgrammar)
+        public int TotalCountCorrectAnswer(User user)
         {
-            return (progressread + progresswrite + progressgrammar + progressalfabet) / 4;
+            var userPoints = user.ProgressAlfabet.Select(x => x.scope).Sum()
+                + user.ProgresGrammar.Select(x => x.scope).Sum()
+                + user.ProgresRead.Select(x => x.scope).Sum()
+                + user.ProgresWrite.Select(x => x.Score).Sum();
+
+            var totalPoints = _countalphabettask + _countgrammar + _countreadtask + _countwritetask;
+
+            return (userPoints / totalPoints) * 100;
         }
 
     }

@@ -13,6 +13,7 @@ namespace Turkish_Talk.Pages
         private readonly AuthService _authService;
         private readonly UserService _userService;
         private ProgresWrite? _progressCurrentTask;
+        public int ProgresSection = 0;
         public int ProgressCurrentTask => _progressCurrentTask?.Score ?? 0;
 
         public mailModel(ApplicationDBContext applicationDB, AuthService authService, UserService userService)
@@ -49,7 +50,7 @@ namespace Turkish_Talk.Pages
                 _progressCurrentTask = ActiveTask.ProgresWrite.FirstOrDefault();
                 Rule = ActiveTask.Rule;
                 FixString = ActiveTask.FixString;
-
+                ProgresSection = userService.GetCabinetViewModel().Result.ScoreRead;
 
                 _userService.StoreValueInSession("ActiveMailTaskId", ActiveTask.Id.ToString());
             }
@@ -87,45 +88,63 @@ namespace Turkish_Talk.Pages
 
         public async Task OnPostTestsSubmitted(IFormCollection data)
         {
-            var inputString = data["fixstring"].First();
-            var inputCorrect = ActiveTask.FixStringCorrect.Equals(inputString, StringComparison.InvariantCultureIgnoreCase);
+            //var inputString = data["fixstring"].First();
+            //var inputCorrect = ActiveTask.FixStringCorrect.Equals(inputString, StringComparison.InvariantCultureIgnoreCase);
 
-            var testAnswers = data["rating"];
+            //var testAnswers = data["rating"];
 
-            var correctTest = 0;
+            //var correctTest = 0;
 
-            for (int i = 0; i < testAnswers.Count; i++)
+            //for (int i = 0; i < testAnswers.Count; i++)
+            //{
+            //    var testAnswerCorrect = ActiveTask.Tests[i].QuestionAnswer == testAnswers[i];
+
+            //    if(testAnswerCorrect)
+            //    {
+            //        correctTest++;
+            //    }
+            //}
+
+            //var testProgress = (correctTest * 100) / testAnswers.Count() / 2;
+
+            //if(inputCorrect)
+            //{
+            //    testProgress += 50;
+            //}
+
+            var correctAnswerCount = 0;
+
+            foreach (var testResult in data)
             {
-                var testAnswerCorrect = ActiveTask.Tests[i].QuestionAnswer == testAnswers[i];
-
-                if(testAnswerCorrect)
+                if (!int.TryParse(testResult.Key, out var testId))
                 {
-                    correctTest++;
+                    continue;
+                }
+                var testAnswer = testResult.Value;
+                var test = Tests.First(x => x.Id == testId);
+                if (test.QuestionAnswer == testAnswer)
+                {
+                    correctAnswerCount++;
                 }
             }
 
-            var testProgress = (correctTest * 100) / testAnswers.Count() / 2;
-
-            if(inputCorrect)
-            {
-                testProgress += 50;
-            }
-
+            var totalTestsCount = Tests.Count();
+            var progress = (correctAnswerCount * 100) / totalTestsCount;
             var userid = _authService.GetUserId();
             var user = _applicationDB.Set<User>().First(x => x.Id == userid);
             if (_progressCurrentTask == null)
             {
-                _progressCurrentTask = new ProgresWrite() { User = user, WriteTask = ActiveTask, Score = testProgress };
+                _progressCurrentTask = new ProgresWrite() { User = user, WriteTask = ActiveTask, Score = progress };
                 _applicationDB.Add(_progressCurrentTask);
             }
             else
             {
-                _progressCurrentTask.Score = testProgress;
+                _progressCurrentTask.Score = progress;
                 _applicationDB.Update(_progressCurrentTask);
             }
-            _applicationDB.SaveChanges();
-        }
 
-       
+            _applicationDB.SaveChanges();
+
+        }
     }
 }

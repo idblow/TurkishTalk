@@ -151,9 +151,7 @@ h2 {
         font-size: 20px;
     }
 
-.test {
-    width: 45%;
-}
+
 
     .test h2 {
         color: #611FCB;
@@ -171,7 +169,6 @@ h2 {
 
 .question ol {
     margin-top: 0px;
-    padding-left: 0px;
 }
 
 .question label {
