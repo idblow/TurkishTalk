@@ -47,19 +47,19 @@ nav ul li a {
 .persona {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     font-size: 20px;
+    padding: 40px 0px;
 }
 
-.ava {
-    width: 20%;
+.ava img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid #3B2E51;
+    object-fit: cover;
+    margin-right: auto;
 }
-
-    .ava img {
-        border-radius: 50%;
-        width: 100%;
-        height: 15rem;
-    }
 
 .info {
     padding-left: 100px;
@@ -114,4 +114,34 @@ nav ul li a {
     justify-content: space-between;
     align-items: center;
     width: 23%;
+}
+.edit {
+    display: flex;
+    flex-direction:column;
+    padding-bottom: 40px;
+}
+.edit_row {
+    width: 400px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: 1px solid #3B2E51;
+    font-size: 18px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.btn_answer {
+    width: 200px;
+    height:40px;
+    font-family: 'Inter';
+    font-size: 18px;
+    color: #fff;
+    background: #3B2E51;
+    border: #FFDD28 2px solid;
+    border-radius: 10px;
+    padding: 0px 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
 }

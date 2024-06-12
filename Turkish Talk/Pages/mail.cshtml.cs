@@ -50,7 +50,7 @@ namespace Turkish_Talk.Pages
                 _progressCurrentTask = ActiveTask.ProgresWrite.FirstOrDefault();
                 Rule = ActiveTask.Rule;
                 FixString = ActiveTask.FixString;
-                ProgresSection = userService.GetCabinetViewModel().Result.ScoreRead;
+                ProgresSection = userService.GetCabinetViewModel().Result.ScoreWrite;
 
                 _userService.StoreValueInSession("ActiveMailTaskId", ActiveTask.Id.ToString());
             }
@@ -77,7 +77,7 @@ namespace Turkish_Talk.Pages
 
             ActiveTask = await _applicationDB.Set<WriteTask>().Include(p => p.ProgresWrite
                 .Where(a => a.User.Id == userId)).FirstAsync(p => p.Name == taskName);
-
+            Tests = ActiveTask.Tests;
             _progressCurrentTask = ActiveTask.ProgresWrite.FirstOrDefault();
             Rule = ActiveTask.Rule;
             FixString = ActiveTask.FixString;
@@ -88,30 +88,8 @@ namespace Turkish_Talk.Pages
 
         public async Task OnPostTestsSubmitted(IFormCollection data)
         {
-            //var inputString = data["fixstring"].First();
-            //var inputCorrect = ActiveTask.FixStringCorrect.Equals(inputString, StringComparison.InvariantCultureIgnoreCase);
-
-            //var testAnswers = data["rating"];
-
-            //var correctTest = 0;
-
-            //for (int i = 0; i < testAnswers.Count; i++)
-            //{
-            //    var testAnswerCorrect = ActiveTask.Tests[i].QuestionAnswer == testAnswers[i];
-
-            //    if(testAnswerCorrect)
-            //    {
-            //        correctTest++;
-            //    }
-            //}
-
-            //var testProgress = (correctTest * 100) / testAnswers.Count() / 2;
-
-            //if(inputCorrect)
-            //{
-            //    testProgress += 50;
-            //}
-
+            var inputString = data["fixstring"].First().TrimStart().TrimEnd().Replace("\r\n", "");
+            var inputCorrect = ActiveTask.FixStringCorrect.Equals(inputString, StringComparison.InvariantCultureIgnoreCase);   
             var correctAnswerCount = 0;
 
             foreach (var testResult in data)
@@ -129,7 +107,11 @@ namespace Turkish_Talk.Pages
             }
 
             var totalTestsCount = Tests.Count();
-            var progress = (correctAnswerCount * 100) / totalTestsCount;
+            var progress = ((correctAnswerCount * 100) / totalTestsCount)/2;
+            if (inputCorrect)
+            {
+                progress += 50;
+            }
             var userid = _authService.GetUserId();
             var user = _applicationDB.Set<User>().First(x => x.Id == userid);
             if (_progressCurrentTask == null)

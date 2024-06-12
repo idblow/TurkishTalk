@@ -20,7 +20,45 @@
   }
 
 ]
-
+//простой тест тема 3
+[
+  {
+    "id": 1,
+    "question": "Pencere",
+    "answers": [],
+    "questionAnswer": "окно"
+  },
+  {
+    "id": 2,
+    "question": "Kitap",
+    "answers": [],
+    "questionAnswer": "книга"
+  },
+  {
+    "id": 3,
+    "question": "Bilgisayar",
+    "answers": [],
+    "questionAnswer": "компьютер"
+  },
+  {
+    "id": 4,
+    "question": "Kedi",
+    "answers": [],
+    "questionAnswer": "кошка"
+  },
+  {
+    "id": 5,
+    "question": "Adam",
+    "answers": [],
+    "questionAnswer": "человек"
+  },
+  {
+    "id": 6,
+    "question": "Aslan",
+    "answers": [],
+    "questionAnswer": "лев"
+  }
+]
 
 //1тест
 [

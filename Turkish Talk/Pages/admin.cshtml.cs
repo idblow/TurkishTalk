@@ -52,7 +52,7 @@ namespace Turkish_Talk.Pages
                 userTotalPoints += user.ProgresRead.Select(x => x.scope).Sum();
                 userTotalPoints += user.ProgresGrammar.Select(x => x.scope).Sum();
 
-                var userProgress = (userTotalPoints / totalPoints) * 100;
+                var userProgress = (userTotalPoints * 100) / totalPoints;
 
                 Users.Add(new UserPresentation(user.Id, user.FullName, userProgress));
             }

@@ -52,6 +52,133 @@
     "questionAnswer": "1"
   }
 ]
+//радио простое
+[
+  {
+    "id": 1,
+    "question": "Что это?",
+    "answers": [
+      "Bu",
+      "O",
+      "Su"
+    ],
+    "questionAnswer": "Bu"
+  },
+  {
+    "id": 2,
+    "question": "Что это(дальше)?",
+    "answers": [
+      "Bu",
+      "Su",
+      "O"
+    ],
+    "questionAnswer": "Su"
+  },
+  {
+    "id": 3,
+    "question": "Что это(далеко)?",
+    "answers": [
+      "Bu",
+      "Su",
+      "O"
+    ],
+    "questionAnswer": "O"
+  },
+  {
+    "id": 4,
+    "question": "Где это?",
+    "answers": [
+      "Bu ne",
+      "Nerede",
+      "O kim"
+    ],
+    "questionAnswer": "Nerede"
+  },
+  {
+    "id": 5,
+    "question": "Кто это?",
+    "answers": [
+      "Bu kim",
+      "Nerede kim",
+      "O kim"
+    ],
+    "questionAnswer": "Bu kim"
+  },
+  {
+    "id": 6,
+    "question": "Кто там?",
+    "answers": [
+      "Bu kim",
+      "Nerede kim",
+      "O kim"
+    ],
+    "questionAnswer": "Bu kim"
+  }
+]
+//тест простой
+[
+  {
+    "id": 1,
+    "question": "Bu ne",
+    "answers": [
+      "кот",
+      "Иван",
+      "Ахмед"
+    ],
+    "questionAnswer": "кот"
+  },
+  {
+    "id": 2,
+    "question": "Bu ne",
+    "answers": [
+      "диван",
+      "Олег",
+      "доктор"
+    ],
+    "questionAnswer": "диван"
+  },
+  {
+    "id": 3,
+    "question": "Onlar kim?",
+    "answers": [
+      "ручка",
+      "дверь",
+      "работники"
+    ],
+    "questionAnswer": "работники"
+  },
+  {
+    "id": 4,
+    "question": "Bu kim",
+    "answers": [
+      "ложка",
+      "Иван",
+      "мышь"
+    ],
+    "questionAnswer": "Иван"
+  },
+  {
+    "id": 5,
+    "question": "Bu kim",
+    "answers": [
+      "лось",
+      "очки",
+      "Ахмед"
+    ],
+    "questionAnswer": "Ахмед"
+  },
+  {
+    "id": 6,
+    "question": "Su ne",
+    "answers": [
+      "крот",
+      "учитель",
+      "шахтер"
+    ],
+    "questionAnswer": "крот"
+  }
+]
+
 
 
 [

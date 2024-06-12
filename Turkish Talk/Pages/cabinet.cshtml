@@ -21,7 +21,7 @@
                         <li><a href="/index#advantages">Преимущества</a></li>
                         <li><a href="/index">О тренажере</a></li>
                         <li><a href="/index#feedback">Напишите нам</a></li>
-                        @if(Model.PersonalCabinetViewModel.IsAdmin)
+                        @if (Model.PersonalCabinetViewModel.IsAdmin)
                         {
                             <li><a href="/admin">Управление сайтом</a></li>
                         }
@@ -34,25 +34,37 @@
     <div class="container">
         <div class="personal_info">
             <div class="persona">
-                <div class="ava"><img src="api/storage/getuserimage/@Model.PersonalCabinetViewModel.Id" /></div>
-                
+                @if (Model.PersonalCabinetViewModel.Image != null)
+                {
+                    <div class="ava">
+                        <img src="api/storage/getuserimage/@Model.PersonalCabinetViewModel.Id" />
+                    </div>
+                }
+                else
+                {
+                    <div class="ava">
+                        <img src="/img/User-1024.webp" />
+                    </div>
+                }
+
                 <div class="info">
                     <h1>@Model.PersonalCabinetViewModel.FullName</h1>
                     <p>Общий результат по курсам: @Model.PersonalCabinetViewModel.TotalScore%</p>
                 </div>
+                <div class="form_edit">
+                    <form method="post" asp-page-handler="UserNameUpdate" class="edit">
+                        <input class="edit_row" required type="text" placeholder="Введите новое имя" name="name" />
+                        <button class="btn_answer" onclick="this.form.submit();">
+                            <p>Изменить имя</p>
+                        </button>
+                    </form>
+                    <form method="post" asp-page-handler="ImageUpdate" enctype="multipart/form-data">
+                        <input class="edit_row" required type="file" name="image" />
+                        <input class="btn_answer" type="submit" value="Изменить фото" />
+                    </form>
+                </div>
             </div>
-            <div class="form_edit">
-                <form method="post" asp-page-handler="UserNameUpdate" style="margin:20px 20px;">
-                    <input required type="text" class="text_field" name="name" />
-                    <button class="btn_answer" onclick="this.form.submit();">
-                        <p>изменить имя</p>
-                    </button>
-                </form>
-                <form method="post" asp-page-handler="ImageUpdate" enctype="multipart/form-data">
-                    <input required type="file" name="image" />
-                    <input class="btn_answer" type="submit" placeholder="изменить фото" />
-                </form>
-            </div>
+
             <div class="sections">
                 <div class="section">
                     <div class="info_section" style="background-color: #9063DB;">

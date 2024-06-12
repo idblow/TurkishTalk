@@ -35,6 +35,7 @@ namespace Turkish_Talk.Pages
             user.Image = image.OpenReadStream().ToArray();
             user.ImageContentType = image.ContentType;
             _applicationDBContext.Update(user);
+            Response.Redirect("cabinet");
             await _applicationDBContext.SaveChangesAsync();
         }
         public async Task OnPostUserNameUpdateAsync(string name)
@@ -49,6 +50,7 @@ namespace Turkish_Talk.Pages
             var user = await _applicationDBContext.Set<User>().FirstAsync(x => x.Id == userId.Value);
             user.FullName = name;
             _applicationDBContext.Update(user);
+            Response.Redirect("cabinet");
             await _applicationDBContext.SaveChangesAsync();
         }
         public void OnGet()

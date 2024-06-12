@@ -54,12 +54,12 @@
                             употребляются
                         </p>
                     </div>
-                    <button class="cat">
+                        <a href="#taskName" class="cat">
                         <p>Начать учиться</p>
                         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="24" viewBox="0 0 50 24" fill="none">
                             <path d="M49.1978 13.0607C49.7836 12.4749 49.7836 11.5251 49.1978 10.9393L39.6519 1.3934C39.0661 0.807612 38.1163 0.807612 37.5306 1.3934C36.9448 1.97918 36.9448 2.92893 37.5306 3.51472L46.0158 12L37.5306 20.4853C36.9448 21.0711 36.9448 22.0208 37.5306 22.6066C38.1163 23.1924 39.0661 23.1924 39.6519 22.6066L49.1978 13.0607ZM0.755615 13.5H48.1372V10.5H0.755615V13.5Z" fill="white"/>
                         </svg>
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -83,14 +83,18 @@
         <div class="reading">
             <h2>Пример чтения текста</h2>
             <p>
-                @Model.TextReadingExample
-                    <audio controls>
-                        <source src="api/storage/GetReadingTaskVoiceExample/@Model.ActiveTask.Id" />
-                    </audio>
+                @Model.TextReadingExample       
             </p>
-                
-        </div>
-        <p style="font-size: 25px;
+                <audio style="z-index:10000;" controls preload="auto">
+                    
+                    <source type="@Model.ActiveTask.VoiceExampleMimeType" src="api/storage/GetReadingTaskVoiceExample/@Model.ActiveTask.Id" />
+                    <p>
+                        Your browser doesn't support HTML5 audio. Here is
+                        a <a href="apparemment.mp3">link to the audio</a> instead.
+                    </p>
+                </audio>
+        </div>      
+            <p style="font-size: 25px;
         font-weight: 600; margin-top: 40px; margin-bottom: 40px;">Прочитайте текста на турецком языке. С помощью словаря переведите текст и ответьте на вопросы.</p>
         <div class="test_block">
             <div class="learn">
@@ -106,7 +110,7 @@
                                         }
                                     </ol>
                                 </div>
-                                <button class="btn_answer" onclick="this.form.submit();">
+                                <button class="btn_answer" onclick="this.form.submit();document.location = '#openModal';">
                                     <p>Ответить</p>
                                 </button>
                             </div>
@@ -118,9 +122,7 @@
         <div class="result">
             <p>Результаты теста: <span>@Model.ProgressCurrentTask%</span></p>
                 <p style="padding-left: 40px;">Результаты по разделу: <span>@Model.ProgresSection%</span></p>
-        </div>
-        <p style="font-size: 25px;
-        font-weight: 600; margin-top: 0px;">Чтобы получить зачет по данному разделу нужно пройти минимум 4 теста</p>
+        </div>        
     </div>
 </div>
 <footer style="background-color: #3B2E51; padding: 20px;">
@@ -159,7 +161,7 @@
             <div class="modal-content">
 
                 <div class="modal-body">
-                    <p>Тест №1 <br> решен правильно</p>
+                    <p>Тест выполнен</p>
                 </div>
                 <div class="modal-header">
                     <a href="#close" title="Close" class="close">ОКЕЙ</a>

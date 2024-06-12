@@ -31,6 +31,63 @@
     "questionAnswer": "1"
   }
 ]
+//тест простой тема 3
+[
+  {
+    "id": 1,
+    "question": "Kalem",
+    "answers": [
+      "Kalemler",
+      "Kalemlar"
+    ],
+    "questionAnswer": "Kalemler"
+  },
+  {
+    "id": 2,
+    "question": "Ev",
+    "answers": [
+      "Evler",
+      "Evlar"
+    ],
+    "questionAnswer": "Evler"
+  },
+  {
+    "id": 3,
+    "question": "Anne",
+    "answers": [
+      "Annelar",
+      "Anneler"
+    ],
+    "questionAnswer": "Anneler"
+  },
+  {
+    "id": 4,
+    "question": "Masa",
+    "answers": [
+      "Masalar",
+      "Masaler"
+    ],
+    "questionAnswer": "Masalar"
+  },
+  {
+    "id": 5,
+    "question": "Erkek",
+    "answers": [
+      "Erkekler",
+      "Erkeklar"
+    ],
+    "questionAnswer": "Erkekler"
+  },
+  {
+    "id": 6,
+    "question": "Gulun",
+    "answers": [
+      "Gulunler",
+      "Gulunlar"
+    ],
+    "questionAnswer": "Gulunlar"
+  }
+]
 
 
 

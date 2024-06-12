@@ -1,5 +1,6 @@
 
 
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Turkish_Talk.Services;
 using TurkishTalk.Persistance;
@@ -10,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages().AddRazorPagesOptions(x=>x.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute()));
 builder.Services.AddDbContext<ApplicationDBContext>();
 builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();

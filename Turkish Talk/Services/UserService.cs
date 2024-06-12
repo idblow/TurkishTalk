@@ -62,6 +62,8 @@ namespace Turkish_Talk.Services
             view.TotalScore = TotalCountCorrectAnswer(user);
             view.Id = user.Id;
             view.IsAdmin = user.Role == UserRole.Admin;
+            view.Image = user.Image;
+            view.ImageContentType = user.ImageContentType;
 
             return view;
         }
@@ -69,10 +71,10 @@ namespace Turkish_Talk.Services
         public async Task<int> CountCorrectAnswerReadAsync(List<ProgresRead> progres)
         {
             _countreadtask = await _applicationDBContext.Set<ReadTask>().CountAsync();
-            var fullprogress = _countreadtask;
+            var fullprogress = _countreadtask * 100;
 
             var realprogress = progres.Select(x => x.scope).Sum();
-            var totalprogress = (realprogress * fullprogress) / 100;
+            var totalprogress = (realprogress * 100) / fullprogress;
             return totalprogress;
 
         }
@@ -80,20 +82,20 @@ namespace Turkish_Talk.Services
         public async Task<int> CountCorrectAnswerWriteAsync(List<ProgresWrite> progresWrite)
         {
             _countwritetask = await _applicationDBContext.Set<WriteTask>().CountAsync();
-            var fullprogress = _countwritetask;
+            var fullprogress = _countwritetask * 100;
 
             var realprogress = progresWrite.Select(x => x.Score).Sum();
-            var totalprogress = (realprogress * fullprogress) / 100;
+            var totalprogress = (realprogress * 100) / fullprogress;
             return totalprogress;
         }
 
         public async Task<int> CountCorrectAnswerAlfabetAsync(List<ProgressAlfabet> progres)
         {
             _countalphabettask = await _applicationDBContext.Set<AlfabetTask>().CountAsync();
-            var fullprogress = _countalphabettask;
+            var fullprogress = _countalphabettask * 100;
 
             var realprogress = progres.Select(x => x.scope).Sum();
-            var totalprogress = (realprogress * fullprogress) / 100;
+            var totalprogress = (realprogress * 100) / fullprogress;
             return totalprogress;
         }
 
@@ -101,10 +103,10 @@ namespace Turkish_Talk.Services
         {
             _countgrammar = await _applicationDBContext.Set<GrammarTask>().CountAsync();
 
-            var fullprogress = _countgrammar;
+            var fullprogress = _countgrammar * 100;
 
             var realprogress = progresGrammars.Select(x => x.scope).Sum();
-            var totalprogress = (realprogress * fullprogress) / 100;
+            var totalprogress = (realprogress*100)/ fullprogress;
             return totalprogress;
         }
 
@@ -115,9 +117,9 @@ namespace Turkish_Talk.Services
                 + user.ProgresRead.Select(x => x.scope).Sum()
                 + user.ProgresWrite.Select(x => x.Score).Sum();
 
-            var totalPoints = _countalphabettask + _countgrammar + _countreadtask + _countwritetask;
+            var totalPoints = (_countalphabettask + _countgrammar + _countreadtask + _countwritetask)*100;
 
-            return (userPoints / totalPoints) * 100;
+            return (userPoints * 100) / totalPoints;
         }
 
     }

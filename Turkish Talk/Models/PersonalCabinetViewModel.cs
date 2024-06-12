@@ -11,6 +11,8 @@
         public int ScoreGrammar { get; set; }
         public int ScoreAlphabet { get; set; }
         public bool IsAdmin { get; set; }
+        public byte[]? Image { get; set; }
+        public string? ImageContentType { get; set; }
 
     }
 }

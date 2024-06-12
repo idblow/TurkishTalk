@@ -49,6 +49,7 @@ namespace Turkish_Talk.Pages
                 WordsColumn2 = words.Skip(columnLenght).Take(columnLenght).ToList();
                 WordsColumn3 = words.Skip(columnLenght * 2).ToList();
                 Tests = ActiveTask.Tests;
+                ProgresSection = _userService.GetCabinetViewModel().Result.ScoreAlphabet;
             }            
         }
         public List<string> TaskTopics { get; set; } = new List<string>();

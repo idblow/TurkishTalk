@@ -19,6 +19,45 @@
     "questionAnswer": "1"
   }
 ]
+//простой тест тема3
+[
+  {
+    "id": 1,
+    "question": "cetvel",
+    "answers": [],
+    "questionAnswer": "линейка"
+  },
+  {
+    "id": 2,
+    "question": "elma",
+    "answers": [],
+    "questionAnswer": "яблоко"
+  },
+  {
+    "id": 3,
+    "question": "uçak",
+    "answers": [],
+    "questionAnswer": "самолет"
+  },
+  {
+    "id": 4,
+    "question": "Çanta",
+    "answers": [],
+    "questionAnswer": "сумка"
+  },
+  {
+    "id": 5,
+    "question": "öğretmen",
+    "answers": [],
+    "questionAnswer": "учитель"
+  },
+  {
+    "id": 6,
+    "question": "kalem",
+    "answers": [],
+    "questionAnswer": "ручка"
+  }
+]
 
 
 

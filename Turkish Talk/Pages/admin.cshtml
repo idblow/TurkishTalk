@@ -31,7 +31,7 @@
                         <input type="hidden" name="userid" value="@user.Id"/>
                         <p>@user.FullName</p>
                         <p>Прогресс: @user.TotalProgress %</p>
-                        <input class="buttonSend" asp-page-handler="UserRemove" type="submit" value="Удалить пользователя" />
+                        <input class="buttonSend" asp-page-handler="UserRemove" type="submit" value="Удалить пользователя" onclick="document.location = '#openModal';" />
                     </form>
                 </div>
             }
@@ -266,5 +266,18 @@
             </div>
         </div>
     </footer>
+    <div id="openModal" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Пользователь удалён</p>
+                </div>
+                <div class="modal-header">
+                    <a href="#close" title="Close" class="close">ОКЕЙ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/modal.js"></script>
 </body>
 
